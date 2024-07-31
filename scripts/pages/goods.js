@@ -24,7 +24,7 @@ async function searchHandler() {
   if (query.category1) baseUrl.searchParams.append('category1DepthCode', parseAndJoinIDs(query.category1));
   if (query.category2) baseUrl.searchParams.append('category2DepthCodes', parseAndJoinIDs(query.category2));
 
-  const data = await (await fetch(baseUrl.toString())).json();
+  const data = await (await fetch(baseUrl.toString(), { credentials: 'include' })).json();
 
   const goods = data.data.list;
   const ids = goods.map((item) => item.goodsNo);
@@ -35,10 +35,12 @@ async function searchHandler() {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
       body: JSON.stringify({ relationIds: ids }),
     })
   ).json();
   const likeData = likeResponse.data.contents.items;
+  console.log(likeData);
 
   goods.forEach((goodsItem, i) => {
     const goodsItemElement = document.createElement('div');
@@ -46,6 +48,7 @@ async function searchHandler() {
     goodsItemElement.innerHTML = goodsItemTemplate({
       ...goodsItem,
       likeCount: +likeData[i].count,
+      isLiked: likeData[i].liked,
     });
     container.appendChild(goodsItemElement);
   });

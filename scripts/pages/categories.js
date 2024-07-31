@@ -21,7 +21,11 @@ async function searchHandler() {
   baseUrl.searchParams.append('sex', query.sex ?? 'A');
   baseUrl.searchParams.append('size', 100);
 
-  const data = await (await fetch(baseUrl.toString())).json();
+  const data = await (
+    await fetch(baseUrl.toString(), {
+      credentials: 'include',
+    })
+  ).json();
 
   const goods = data.data.goodsList;
 
@@ -33,6 +37,7 @@ async function searchHandler() {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
       body: JSON.stringify({ relationIds: ids }),
     })
   ).json();
