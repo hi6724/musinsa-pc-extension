@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "무신사PC",
+  "version": "1.0",
+  "icons": {
+    "16": "images/16.png",
+    "32": "images/32.png",
+    "48": "images/48.png",
+    "128": "images/128.png"
+  },
+  "action": {
+    "default_icon": "images/32.png",
+    "default_title": "무신사PC"
+  },
+  "permissions": ["tabs", "activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["https://*.musinsa.com/**"],
+      "css": ["styles/main.css", "styles/goods.css", "styles/brands.css"],
+      "js": ["scripts/utils/css.js", "scripts/utils/url.js", "scripts/utils/common.js", "scripts/main.js"]
+    },
+    {
+      "matches": ["https://*.musinsa.com/search/musinsa/goods*"],
+      "css": ["styles/main.css", "styles/goods.css"],
+      "js": [
+        "scripts/utils/css.js",
+        "scripts/utils/url.js",
+        "scripts/utils/common.js",
+        "scripts/utils/goodsItem.js",
+        "scripts/utils/pagination.js",
+        "scripts/pages/goods.js",
+        "scripts/main.js"
+      ]
+    },
+    {
+      "matches": ["https://*.musinsa.com/categories/**"],
+      "css": ["styles/main.css", "styles/categories.css"],
+      "js": [
+        "scripts/utils/css.js",
+        "scripts/utils/url.js",
+        "scripts/utils/common.js",
+        "scripts/utils/categoryItem.js",
+        "scripts/utils/pagination.js",
+        "scripts/main.js",
+        "scripts/pages/categories.js"
+      ]
+    }
+  ]
+}

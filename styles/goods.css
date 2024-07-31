@@ -1,0 +1,101 @@
+/* https://www.musinsa.com/search/musinsa/goods?q=%EB%B0%98%ED%8C%94&type=popular */
+.pagination-container {
+  position: absolute;
+  bottom: 0;
+  margin: 0 auto;
+}
+
+.goods-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.goods-item {
+  max-width: 200px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.goods-item img {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  opacity: 1 !important;
+}
+
+.exZiif {
+  max-width: 1200px !important;
+}
+
+.dlPMIU,
+.byfLRW {
+  display: none !important;
+}
+
+.hPnxcj {
+  display: none !important;
+}
+.cQwYpo {
+  width: 100% !important;
+}
+
+.goods_target > div > div {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+}
+
+.ccUkok {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  vertical-align: top;
+  background-color: rgb(24, 162, 134);
+  font-family: Musinsa, 'Apple SD Gothic Neo', Roboto, 'Noto Sans KR', 'sans-serif';
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  padding: 4px 6px;
+}
+
+.bLrMfP {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  vertical-align: top;
+  background-color: rgb(185, 0, 0);
+  font-family: Musinsa, 'Apple SD Gothic Neo', Roboto, 'Noto Sans KR', 'sans-serif';
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  padding: 4px 6px;
+}
+
+.exQRko {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  vertical-align: top;
+  background-color: rgb(255, 83, 45);
+  font-family: Musinsa, 'Apple SD Gothic Neo', Roboto, 'Noto Sans KR', 'sans-serif';
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  padding: 4px 6px;
+}
+
+.TLcQ {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  vertical-align: top;
+  background-color: rgb(204, 78, 99);
+  font-family: Musinsa, 'Apple SD Gothic Neo', Roboto, 'Noto Sans KR', 'sans-serif';
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  padding: 4px 6px;
+}
