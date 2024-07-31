@@ -12,7 +12,7 @@
     "default_icon": "images/32.png",
     "default_title": "무신사PC"
   },
-  "permissions": ["tabs", "activeTab", "scripting"],
+  "permissions": [],
   "content_scripts": [
     {
       "matches": ["https://*.musinsa.com/**"],
