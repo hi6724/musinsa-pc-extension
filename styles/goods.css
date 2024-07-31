@@ -7,7 +7,7 @@
 
 .goods-container {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(10, 1fr);
 }
 
 .goods-item {
@@ -24,7 +24,7 @@
 }
 
 .exZiif {
-  max-width: 1200px !important;
+  max-width: 1500px !important;
 }
 
 .dlPMIU,
@@ -41,7 +41,7 @@
 
 .goods_target > div > div {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
 }
 
 .ccUkok {

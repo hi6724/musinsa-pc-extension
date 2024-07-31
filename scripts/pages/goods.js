@@ -18,7 +18,7 @@ async function searchHandler() {
   baseUrl.searchParams.append('includeUnisex', query.includeUnisex != 0);
   baseUrl.searchParams.append('sort', query.sort ?? 'POPULAR');
   baseUrl.searchParams.append('originalYn', 'N');
-  baseUrl.searchParams.append('size', 80);
+  baseUrl.searchParams.append('size', 100);
   baseUrl.searchParams.append('page', query.page ?? 1);
   baseUrl.searchParams.append('sex', query.sex ?? 'A');
   if (query.category1) baseUrl.searchParams.append('category1DepthCode', parseAndJoinIDs(query.category1));

@@ -1,14 +1,14 @@
 .brandshop-product--grid-style {
   display: grid !important;
   padding: 0 !important;
-  grid-template-columns: 200px 200px 200px 200px 200px 200px !important;
+  grid-template-columns: repeat(10, 150px) !important;
 }
 .brandshop-product__list {
   width: 100% !important;
 }
 .set-max-width-container {
-  max-width: 1200px !important;
+  max-width: 1500px !important;
 }
 .content {
-  max-width: 1200px !important;
+  max-width: 1500px !important;
 }

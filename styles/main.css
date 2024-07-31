@@ -1,10 +1,10 @@
 /* https://www.musinsa.com/main/116 */
 
 .is-web {
-  max-width: 1200px !important;
+  max-width: 1500px !important;
 }
 .container {
-  max-width: 1200px !important;
+  max-width: 1500px !important;
   width: 100% !important;
 }
 
@@ -22,7 +22,7 @@
 .cta-DVS {
   display: grid !important;
   padding: 0 !important;
-  grid-template-columns: 200px 200px 200px 200px 200px 200px !important;
+  grid-template-columns: repeat(10, 150px) !important;
 }
 .bJUNen {
   width: 100% !important;

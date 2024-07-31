@@ -19,7 +19,7 @@
 
 .goods-container {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   z-index: -1;
   position: relative;
 }
@@ -38,7 +38,7 @@
 }
 
 .exZiif {
-  max-width: 1200px !important;
+  max-width: 1500px !important;
 }
 
 .dlPMIU,

@@ -19,7 +19,7 @@ async function searchHandler() {
   baseUrl.searchParams.append('sortCode', query.sortCode ?? 'pop_category');
   baseUrl.searchParams.append('page', query.page ?? 1);
   baseUrl.searchParams.append('sex', query.sex ?? 'A');
-  baseUrl.searchParams.append('size', 80);
+  baseUrl.searchParams.append('size', 100);
 
   const data = await (await fetch(baseUrl.toString())).json();
 
