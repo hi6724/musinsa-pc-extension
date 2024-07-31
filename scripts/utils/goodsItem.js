@@ -81,6 +81,7 @@ function goodsItemTemplate({
   stopEndDate,
   stopStartDate,
   timeSaleText,
+  isLiked,
 }) {
   const goodsLabelHTML = () => {
     const label = saleCampaign?.badgeName;
@@ -181,36 +182,16 @@ function goodsItemTemplate({
           data-gtm-action="like_ok"
           aria-label="좋아요 버튼"
         >
-          <svg
-            class="sc-1q5dvtp-0 fLzQYP"
-            width="1em"
-            height="1em"
-            viewBox="0 0 30 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            color="transparent"
-          >
-            <path
-              d="M24.1159 7.60884C21.9708 5.46372 18.4929 5.46372 16.3477 7.60884L16 7.95658L14.9765 8.98003L13.6523 7.65578C11.5072 5.51066 8.02923 5.51065 5.88411 7.65578C3.73899 9.8009 3.73899 13.2788 5.88411 15.424L14.9991 24.539L18.5247 21.0134C18.6733 20.8647 18.8126 20.7102 18.9424 20.5505L24.1159 15.377C26.261 13.2319 26.261 9.75397 24.1159 7.60884Z"
-              stroke="currentColor"
-              vectorEffect="non-scaling-stroke"
-            ></path>
-          </svg>
-          <svg
-            width="1em"
-            height="1em"
-            viewBox="0 0 30 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            color="#ffffff"
-            class="sc-1q5dvtp-1 coxGQm"
-          >
-            <path
-              d="M24.1159 7.60884C21.9708 5.46372 18.4929 5.46372 16.3477 7.60884L16 7.95658L14.9765 8.98003L13.6523 7.65578C11.5072 5.51066 8.02923 5.51065 5.88411 7.65578C3.73899 9.8009 3.73899 13.2788 5.88411 15.424L14.9991 24.539L18.5247 21.0134C18.6733 20.8647 18.8126 20.7102 18.9424 20.5505L24.1159 15.377C26.261 13.2319 26.261 9.75397 24.1159 7.60884Z"
-              stroke="currentColor"
-              vectorEffect="non-scaling-stroke"
-            ></path>
-          </svg>
+
+        ${
+          isLiked
+            ? `<svg class="sc-1q5dvtp-0 epynNi" width="1em" height="1em" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ff0000" ><path d="M24.1159 7.60884C21.9708 5.46372 18.4929 5.46372 16.3477 7.60884L16 7.95658L14.9765 8.98003L13.6523 7.65578C11.5072 5.51066 8.02923 5.51065 5.88411 7.65578C3.73899 9.8009 3.73899 13.2788 5.88411 15.424L14.9991 24.539L18.5247 21.0134C18.6733 20.8647 18.8126 20.7102 18.9424 20.5505L24.1159 15.377C26.261 13.2319 26.261 9.75397 24.1159 7.60884Z" stroke="currentColor" vector-effect="non-scaling-stroke"></path></svg>`
+            : `<svg width="1em" height="1em" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffffff" class="sc-1q5dvtp-1 coxGQm"><path d="M24.1159 7.60884C21.9708 5.46372 18.4929 5.46372 16.3477 7.60884L16 7.95658L14.9765 8.98003L13.6523 7.65578C11.5072 5.51066 8.02923 5.51065 5.88411 7.65578C3.73899 9.8009 3.73899 13.2788 5.88411 15.424L14.9991 24.539L18.5247 21.0134C18.6733 20.8647 18.8126 20.7102 18.9424 20.5505L24.1159 15.377C26.261 13.2319 26.261 9.75397 24.1159 7.60884Z" stroke="currentColor" vector-effect="non-scaling-stroke"></path></svg>`
+        }
+
+
+
+
         </button>
         <div class="sc-1i2vuxr-0 elMbxN">
         ${goodsLabelHTML()}
@@ -248,13 +229,21 @@ function goodsItemTemplate({
                   ${price.toLocaleString()}원
                 </strong>
               </div>
-              <del aria-label="정상가격" class="sc-1dubb4w-6 foOQTl">
+              ${
+                saleRate > 0
+                  ? `<del aria-label="정상가격" class="sc-1dubb4w-6 foOQTl">
                 ${normalPrice.toLocaleString()}원
-              </del>
+              </del>`
+                  : ''
+              }
             </div>
-            <strong aria-label="할인율" class="sc-1dubb4w-9 kNvOLb">
+            ${
+              saleRate > 0
+                ? `<strong aria-label="할인율" class="sc-1dubb4w-9 kNvOLb">
               ${saleRate}%
-            </strong>
+            </strong>`
+                : ''
+            }
           </div>
         </div>
         <div class="sc-1yenj15-13 fLHaZn">

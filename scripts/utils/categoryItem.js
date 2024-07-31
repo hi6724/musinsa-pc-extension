@@ -146,17 +146,25 @@ function categoryItemTemplate({
               <div class='category__sc-79f6w4-2 eDQQUl'>
                 <div class='category__sc-79f6w4-4 dPcEFH'>
                   <span aria-label='판매가격' class='category__sc-79f6w4-5 eTRmwC'>
-                    ${price}원
+                    ${price.toLocaleString()}원
                   </span>
                 </div>
               </div>
-              <strong aria-label='할인율' class='category__sc-79f6w4-9 jNpLBZ'>
+              ${
+                saleRate > 0
+                  ? `<strong aria-label='할인율' class='category__sc-79f6w4-9 jNpLBZ'>
                 ${saleRate}%
-              </strong>
+              </strong>`
+                  : ''
+              }
             </div>
-            <del aria-label='정상가격' class='category__sc-79f6w4-6 iHtcSg'>
-              ${normalPrice}원
-            </del>
+            ${
+              saleRate > 0
+                ? `<del aria-label='정상가격' class='category__sc-79f6w4-6 iHtcSg'>
+              ${normalPrice.toLocaleString()}원
+            </del>`
+                : ''
+            }
           </div>
           <div class='category__sc-rb2kzk-14 kPhfC'>
             <div class='category__sc-rb2kzk-15 FDcJf'>
