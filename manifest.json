@@ -16,7 +16,7 @@
   "content_scripts": [
     {
       "matches": ["https://*.musinsa.com/**"],
-      "css": ["styles/main.css", "styles/goods.css", "styles/brands.css"],
+      "css": ["styles/main.css", "styles/goods.css", "styles/brands.css", "styles/goodsDetail.css"],
       "js": ["scripts/utils/css.js", "scripts/utils/url.js", "scripts/utils/common.js", "scripts/main.js"]
     },
     {

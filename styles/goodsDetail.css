@@ -1,0 +1,10 @@
+.wrap-estimate-list {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+.n-list-util,
+.review-keyword-list,
+.wrap-page-button {
+  grid-column-start: 1 !important;
+  grid-column-end: -1 !important;
+}
