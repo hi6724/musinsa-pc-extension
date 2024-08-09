@@ -1,104 +1,129 @@
 /* https://www.musinsa.com/main/116 */
 
-.is-web {
-  max-width: 1500px !important;
-}
-.container {
-  max-width: 1500px !important;
-  width: 100% !important;
+@media (min-width: 1200px) {
+  .is-web,
+  .yMDns,
+  .iwMOXK,
+  .bTubkf {
+    max-width: 1200px !important;
+  }
+  .container {
+    max-width: 1200px !important;
+    width: 100% !important;
+  }
+  /* 양옆 세로선 제거 */
+  .container::after,
+  .container::before {
+    z-index: -1 !important;
+    opacity: 0 !important;
+  }
+  /* 광고 제거 */
+  .gvLqcR {
+    display: none !important;
+  }
+
+  .cta-DVS {
+    display: grid !important;
+    padding: 0 !important;
+    grid-template-columns: repeat(10, 120px) !important;
+  }
+  .bJUNen {
+    width: 100% !important;
+  }
+
+  /* 하단 nav 좌측으로 */
+  .common-layout__sc-ors8kb-2 {
+    flex-direction: column !important;
+    left: calc(50% - 670px) !important;
+    top: 0 !important;
+    width: 70px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.6) !important;
+    z-index: -1 !important;
+  }
+
+  .common-layout__sc-ors8kb-3 {
+    width: 100% !important;
+    flex-basis: auto !important;
+  }
+
+  /* 우축 플로팅 */
+  .common-layout__sc-4fnf6u-0 {
+    transform: translateX(0) !important;
+    right: 16px !important;
+  }
+  /* 좌측 플로팅 */
+  .common-layout__sc-7os1cp-0 {
+    transform: translateX(0) !important;
+    left: 64px !important;
+  }
+
+  /* 카테고리 바 */
+  .fRrzci {
+    width: 600px;
+    left: calc(50% - 300px);
+  }
+  /* 검색 필터 */
+  .iucaCN {
+    width: 600px !important;
+  }
+
+  .pagination {
+    position: fixed;
+    bottom: 1rem;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    background-color: rgba(255, 255, 255, 0.4);
+    z-index: 99999;
+    border-radius: 1rem;
+    border: 1px solid #000;
+    backdrop-filter: blur(10px);
+  }
+  .page {
+    padding: 0.5rem 1rem;
+    transition: all 0.2s;
+  }
+  .page.prev {
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+  }
+  .page.next {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+
+  .page.active {
+    background-color: royalblue;
+    color: #fff;
+    font-weight: bold;
+  }
+  .page.active:hover {
+    background-color: royalblue;
+    color: #fff;
+    font-weight: bold;
+  }
+  .page:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-weight: bold;
+  }
 }
 
-/* 양옆 세로선 제거 */
-.container::after,
-.container::before {
-  z-index: -1 !important;
-  opacity: 0 !important;
-}
-/* 광고 제거 */
-.gvLqcR {
-  display: none !important;
-}
-
-.cta-DVS {
-  display: grid !important;
-  padding: 0 !important;
-  grid-template-columns: repeat(10, 150px) !important;
-}
-.bJUNen {
-  width: 100% !important;
-}
-
-/* 하단 nav 좌측으로 */
-.common-layout__sc-ors8kb-2 {
-  flex-direction: column !important;
-  left: 0 !important;
-  top: 0 !important;
-  width: 48px !important;
-  margin: 0 !important;
-}
-.common-layout__sc-ors8kb-3 {
-  width: 100% !important;
-}
-
-/* 우축 플로팅 */
-.common-layout__sc-4fnf6u-0 {
-  transform: translateX(0) !important;
-  right: 16px !important;
-}
-/* 좌측 플로팅 */
-.common-layout__sc-7os1cp-0 {
-  transform: translateX(0) !important;
-  left: 64px !important;
-}
-
-/* 카테고리 바 */
-.fRrzci {
-  width: 600px;
-  left: calc(50% - 300px);
-}
-/* 검색 필터 */
-.iucaCN {
-  width: 600px !important;
-}
-
-.pagination {
-  position: fixed;
-  bottom: 1rem;
-  display: flex;
-  left: 50%;
-  transform: translateX(-50%);
-  width: fit-content;
-  background-color: rgba(255, 255, 255, 0.4);
-  z-index: 99999;
-  border-radius: 1rem;
-  border: 1px solid #000;
-  backdrop-filter: blur(10px);
-}
-.page {
-  padding: 0.5rem 1rem;
-  transition: all 0.2s;
-}
-.page.prev {
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
-}
-.page.next {
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-}
-
-.page.active {
-  background-color: royalblue;
-  color: #fff;
-  font-weight: bold;
-}
-.page.active:hover {
-  background-color: royalblue;
-  color: #fff;
-  font-weight: bold;
-}
-.page:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  font-weight: bold;
+@media (min-width: 1701px) {
+  .container,
+  .is-web,
+  .yMDns,
+  .iwMOXK,
+  .bTubkf {
+    max-width: 1500px !important;
+  }
+  .cta-DVS {
+    grid-template-columns: repeat(10, 150px) !important;
+  }
+  .common-layout__sc-ors8kb-2 {
+    left: calc(50% - 820px) !important;
+  }
 }

@@ -63,6 +63,7 @@ async function searchHandler() {
 }
 
 async function initsearchGoods() {
+  if (window.innerWidth < 1200) return;
   await wait(500);
   let oldHref = document.location.href;
   const body = document.querySelector('body');
