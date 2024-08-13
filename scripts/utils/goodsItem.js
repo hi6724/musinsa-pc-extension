@@ -199,7 +199,7 @@ function goodsItemTemplate({
       <div aria-labelledby=${`thumb|${goodsNo}`} class="sc-1yenj15-9 cZTsNj">
         <div class="sc-1yenj15-10 eQiJaN">
           <a
-            href={brandLinkUrl}
+            href=${`${brandLinkUrl}`}
             title=${`${brandName} 샵으로 이동`}
             class="sc-1yenj15-11 sssfK gtm-catch-click"
             data-gtm-cd-19="button"
@@ -275,7 +275,7 @@ function goodsItemTemplate({
                 ></path>
               </svg>
             </div>
-            ${formatNumber(estCount)}
+            ${formatNumber(estCount)} / ${(reviewScore / 20).toFixed(1)}
           </div>
         </div>
       </div>

@@ -23,13 +23,6 @@
     margin: 0 auto;
   }
 
-  .goods-container {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    z-index: -1;
-    position: relative;
-  }
-
   .goods-item {
     max-width: 200px;
     width: 100%;

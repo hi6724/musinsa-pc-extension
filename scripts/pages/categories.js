@@ -16,6 +16,11 @@ async function searchHandler() {
   const categoryCode = window.location.href.split('/').at(-1).split('?')[0];
   baseUrl.searchParams.append('categoryCode', categoryCode);
 
+  query.sale_goods && baseUrl.searchParams.append('saleGoods', query.sale_goods);
+  query.tags && baseUrl.searchParams.append('tags', query.tags);
+  query.price1 && baseUrl.searchParams.append('startPrice', query.price1);
+  query.price2 && baseUrl.searchParams.append('endPrice', query.price2);
+  query.discountRateCode && baseUrl.searchParams.append('discountRateCode', query.discountRateCode);
   baseUrl.searchParams.append('sortCode', query.sortCode ?? 'pop_category');
   baseUrl.searchParams.append('page', query.page ?? 1);
   baseUrl.searchParams.append('sex', query.sex ?? 'A');

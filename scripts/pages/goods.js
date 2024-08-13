@@ -7,6 +7,7 @@ async function searchHandler() {
   const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/musinsa\/goods(\?.*)?$/;
   const container = document.querySelector('.goods-container');
   const pagination = document.querySelector('.pagination');
+
   pagination.innerHTML = '';
   container.innerHTML = '';
   if (!searchDetailPattern.test(window.location.href)) return;
@@ -18,9 +19,15 @@ async function searchHandler() {
   baseUrl.searchParams.append('includeUnisex', query.includeUnisex != 0);
   baseUrl.searchParams.append('sort', query.sort ?? 'POPULAR');
   baseUrl.searchParams.append('originalYn', 'N');
-  baseUrl.searchParams.append('size', 100);
+  baseUrl.searchParams.append('size', window.innerWidth < 1701 ? 80 : 100);
   baseUrl.searchParams.append('page', query.page ?? 1);
   baseUrl.searchParams.append('sex', query.sex ?? 'A');
+  query.sale_goods && baseUrl.searchParams.append('saleGoods', query.sale_goods);
+  query.tags && baseUrl.searchParams.append('tags', query.tags);
+  query.price1 && baseUrl.searchParams.append('startPrice', query.price1);
+  query.price2 && baseUrl.searchParams.append('endPrice', query.price2);
+  query.discountRateCode && baseUrl.searchParams.append('discountRateCode', query.discountRateCode);
+
   if (query.category1) baseUrl.searchParams.append('category1DepthCode', parseAndJoinIDs(query.category1));
   if (query.category2) baseUrl.searchParams.append('category2DepthCodes', parseAndJoinIDs(query.category2));
 
@@ -39,9 +46,8 @@ async function searchHandler() {
       body: JSON.stringify({ relationIds: ids }),
     })
   ).json();
-  const likeData = likeResponse.data.contents.items;
-  console.log(likeData);
 
+  const likeData = likeResponse.data.contents.items;
   goods.forEach((goodsItem, i) => {
     const goodsItemElement = document.createElement('div');
     goodsItemElement.className = 'goods-item';

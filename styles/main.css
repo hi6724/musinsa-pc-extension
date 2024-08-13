@@ -7,6 +7,12 @@
   .bTubkf {
     max-width: 1200px !important;
   }
+  .goods-container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    position: relative;
+  }
+
   .container {
     max-width: 1200px !important;
     width: 100% !important;
@@ -25,7 +31,7 @@
   .cta-DVS {
     display: grid !important;
     padding: 0 !important;
-    grid-template-columns: repeat(10, 120px) !important;
+    grid-template-columns: repeat(8, 150px) !important;
   }
   .bJUNen {
     width: 100% !important;
@@ -146,4 +152,18 @@
   .common-layout__sc-ors8kb-2 {
     left: calc(50% - 820px) !important;
   }
+  .goods-container {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}
+
+.crpSRG {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 100%;
+  font-family: Musinsa, 'Apple SD Gothic Neo', Roboto, 'Noto Sans KR', 'sans-serif';
+  font-size: 10px;
+  color: rgb(255, 146, 58);
+  line-height: 1;
 }
