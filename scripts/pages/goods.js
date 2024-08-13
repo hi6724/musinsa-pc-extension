@@ -50,6 +50,19 @@ async function searchHandler() {
       likeCount: +likeData[i].count,
       isLiked: likeData[i].liked,
     });
+    const likeBtn = goodsItemElement.querySelector('button');
+    likeBtn.addEventListener('click', () => {
+      const isLiked = likeBtn.classList.contains('liked');
+      likeBtn.classList.toggle('liked');
+      fetch(`https://like.musinsa.com/like/api/v1/members/liketypes/goods/relations/${goodsItem.goodsNo}`, {
+        method: isLiked ? 'DELETE' : 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+    });
+
     container.appendChild(goodsItemElement);
   });
 

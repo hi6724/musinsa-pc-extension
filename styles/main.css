@@ -110,6 +110,26 @@
     color: #fff;
     font-weight: bold;
   }
+
+  .sc-1q5dvtp-2.liked > :nth-child(2) {
+    display: none;
+  }
+  .OvWlJ.liked > :nth-child(2) {
+    display: none;
+  }
+
+  .sc-1q5dvtp-2:not(.liked) > :nth-child(1) {
+    display: none;
+  }
+  .OvWlJ:not(.liked) > :nth-child(1) {
+    display: none;
+  }
+  .eGmYVg,
+  .dREizi {
+    transform: scale(1) !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
 }
 
 @media (min-width: 1701px) {
