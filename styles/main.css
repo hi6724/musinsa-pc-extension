@@ -3,12 +3,12 @@
 @media (min-width: 1200px) {
   .is-web,
   .yMDns,
-  .iwMOXK,
-  .bTubkf {
+  .iwMOXK {
     max-width: 1200px !important;
   }
   .goods-container {
     display: grid;
+    z-index: 0;
     grid-template-columns: repeat(8, 1fr);
     position: relative;
   }
@@ -136,14 +136,18 @@
     animation: none !important;
     opacity: 1 !important;
   }
+  .bTubkf,
+  .llzAq {
+    right: 50% !important;
+    transform: translateX(50%) !important;
+  }
 }
 
 @media (min-width: 1701px) {
   .container,
   .is-web,
   .yMDns,
-  .iwMOXK,
-  .bTubkf {
+  .iwMOXK {
     max-width: 1500px !important;
   }
   .cta-DVS {
