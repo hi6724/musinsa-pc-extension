@@ -13,24 +13,7 @@ async function searchHandler() {
   if (!searchDetailPattern.test(window.location.href)) return;
 
   const query = getQueryParams(window.location.search);
-  const baseUrl = new URL('https://search.musinsa.com/api/search/v2/goods?siteKindId=musinsa');
-  baseUrl.searchParams.append('keyword', query.q);
-  baseUrl.searchParams.append('includeSoldOut', !!query.isChecked);
-  baseUrl.searchParams.append('includeUnisex', query.includeUnisex != 0);
-  baseUrl.searchParams.append('sort', query.sort ?? 'POPULAR');
-  baseUrl.searchParams.append('originalYn', 'N');
-  baseUrl.searchParams.append('size', window.innerWidth < 1701 ? 80 : 100);
-  baseUrl.searchParams.append('page', query.page ?? 1);
-  baseUrl.searchParams.append('sex', query.sex ?? 'A');
-  query.sale_goods && baseUrl.searchParams.append('saleGoods', query.sale_goods);
-  query.tags && baseUrl.searchParams.append('tags', query.tags);
-  query.price1 && baseUrl.searchParams.append('startPrice', query.price1);
-  query.price2 && baseUrl.searchParams.append('endPrice', query.price2);
-  query.discountRateCode && baseUrl.searchParams.append('discountRateCode', query.discountRateCode);
-
-  if (query.category1) baseUrl.searchParams.append('category1DepthCode', parseAndJoinIDs(query.category1));
-  if (query.category2) baseUrl.searchParams.append('category2DepthCodes', parseAndJoinIDs(query.category2));
-
+  const baseUrl = setSearchFilters();
   const data = await (await fetch(baseUrl.toString(), { credentials: 'include' })).json();
 
   const goods = data.data.list;

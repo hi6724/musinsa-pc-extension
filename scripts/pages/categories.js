@@ -12,19 +12,7 @@ async function searchHandler() {
   if (!urlPattern.test(window.location.href)) return;
 
   const query = getQueryParams(window.location.search);
-  const baseUrl = new URL('https://display.musinsa.com/display/api/v2/categories/ITEM/goods?siteKindId=musinsa');
-  const categoryCode = window.location.href.split('/').at(-1).split('?')[0];
-  baseUrl.searchParams.append('categoryCode', categoryCode);
-
-  query.sale_goods && baseUrl.searchParams.append('saleGoods', query.sale_goods);
-  query.tags && baseUrl.searchParams.append('tags', query.tags);
-  query.price1 && baseUrl.searchParams.append('startPrice', query.price1);
-  query.price2 && baseUrl.searchParams.append('endPrice', query.price2);
-  query.discountRateCode && baseUrl.searchParams.append('discountRateCode', query.discountRateCode);
-  baseUrl.searchParams.append('sortCode', query.sortCode ?? 'pop_category');
-  baseUrl.searchParams.append('page', query.page ?? 1);
-  baseUrl.searchParams.append('sex', query.sex ?? 'A');
-  baseUrl.searchParams.append('size', 100);
+  const baseUrl = setCategoryFilters();
 
   const data = await (
     await fetch(baseUrl.toString(), {
