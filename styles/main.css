@@ -1,11 +1,19 @@
 /* https://www.musinsa.com/main/116 */
 
 @media (min-width: 1200px) {
+  .dlPMIU,
+  .byfLRW,
+  .hPnxcj,
+  .dserkL {
+    display: none !important;
+  }
+
   .is-web,
   .yMDns,
   .iwMOXK {
     max-width: 1200px !important;
   }
+
   .goods-container {
     display: grid;
     z-index: 0;
@@ -17,6 +25,30 @@
     max-width: 1200px !important;
     width: 100% !important;
   }
+  /* 메인페이지 최상단 캐러셀 크기 */
+  .gbZQLx,
+  .iNjCKn,
+  .RBple {
+    max-width: 600px !important;
+    margin: 0 auto !important;
+  }
+
+  .gUrkss,
+  .bCblye {
+    grid-auto-columns: calc(12.5% - 3.33333px) !important;
+  }
+  .hoyWeE {
+    grid-auto-columns: calc(25% - 2.5px) !important;
+  }
+  .fEHdBC {
+    grid-template-rows: repeat(2, 1fr) !important;
+    grid-auto-columns: calc(20% - 3px) !important;
+  }
+
+  .jKFoVr > div {
+    display: none !important;
+  }
+
   /* 양옆 세로선 제거 */
   .container::after,
   .container::before {
@@ -95,10 +127,12 @@
   .page.prev {
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
+    border-right: 1px solid #000;
   }
   .page.next {
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    border-left: 1px solid #000;
   }
 
   .page.active {
@@ -115,6 +149,13 @@
     background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
     font-weight: bold;
+  }
+  .page.next[disabled],
+  .page.prev[disabled] {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: black;
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 
   .sc-1q5dvtp-2.liked > :nth-child(2) {
@@ -140,6 +181,12 @@
   .llzAq {
     right: 50% !important;
     transform: translateX(50%) !important;
+  }
+
+  /* 타임세일 */
+  .kYTqzW {
+    flex: 0 0 12.5% !important;
+    width: 12.5% !important;
   }
 }
 
