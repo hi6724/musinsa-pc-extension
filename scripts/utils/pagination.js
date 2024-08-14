@@ -1,8 +1,12 @@
 function handlePageClick(event) {
   const q = getQueryParams(window.location.search);
   const page = event.target.dataset.page;
+  let newPage = parseInt(q.page ?? 1, 10);
   if (!page) return;
-  q.page = page;
+  else if (page === 'prev') newPage = Math.max(1, newPage - 5);
+  else if (page === 'next') newPage = Math.min(newPage + 5, event.target.dataset.last);
+  else newPage = page;
+  q.page = newPage;
   updateURLWithParams(q);
 }
 function paginationTemplate({ currentPage, lastPage }) {
@@ -31,8 +35,9 @@ function paginationTemplate({ currentPage, lastPage }) {
   }
 
   return `
-            <button class="page prev">prev</button>
+            <button data-page=prev class="page prev" ${currentPage == 1 && 'disabled'}>prev</button>
             ${pages}
-            <button class="page next">next</button>
+            <button data-page=next data-last=${lastPage} class="page next"
+            ${currentPage == lastPage && 'disabled'}>next</button>
     `;
 }
