@@ -1,40 +1,7 @@
-function goodsItemTemplate({
-  goodsNo,
-  goodsName,
-  goodsLinkUrl,
-  thumbnail,
-  displayGenderText,
-  isSoldOut,
-  normalPrice,
-  price,
-  saleRate,
-  brand,
-  brandName,
-  brandLinkUrl,
-  reviewCount,
-  reviewScore,
-  isOptionVisible,
-  isAd,
-  infoLabelList,
-  imageLabelList,
-  clickTrackers,
-  impressionTrackers,
-  snap,
-  likeCount,
-  isLiked,
-}) {
-  const goodsLabelHTML = infoLabelList
-    .map((data) => {
-      const { code, title, color } = data;
-      return `<span
-                class='inline text-etc_11px_reg py-[1px] px-1 rounded-sm h-4 text-white bg-gray-500 bg-opacity-10 sc-bBkKde jbyWrG'
-                title=${`${code}`}
-              >
-                <span class='text-etc_11px_reg text-gray-600 font-pretendard'>${`${title}`}</span>
-              </span>`;
-    })
-    .join('');
-  return `
+import React from 'react';
+
+function temp() {
+  return (
     <div class='sc-x7dw99-1 ghYdjv'>
       <div class='sc-khjJXk bQrEVy'>
         <div class='sc-fLseNd ikaYtH'>
@@ -45,14 +12,14 @@ function goodsItemTemplate({
               rel='noreferrer'
               aria-label='상품 상세로 이동'
               class='sc-fHejqy iqtthR gtm-view-item-list gtm-select-item'
-              data-item-id=${`${goodsNo}`}
-              data-price=${`${price}`}
-              data-original-price=${`${normalPrice}`}
-              data-item-brand=${`${brandName}`}
+              data-item-id='1627892'
+              data-price='39490'
+              data-original-price='43900'
+              data-item-brand='musinsastandard'
               data-quantity='1'
               data-item-category='(not set)'
-              data-discount=${`${normalPrice - price}`}
-              data-discount-rate=${`${saleRate}`}
+              data-discount='4410'
+              data-discount-rate='10'
               data-item-list-id='goods_list'
               data-item-list-index='3'
               data-index='3'
@@ -72,19 +39,34 @@ function goodsItemTemplate({
               <div class='relative z-5 inline-flex items-center justify-center w-full h-full before:absolute before:inset-0 before:size-full before:z-5 before:overflow-hidden min-w-8 min-h-[38px] before:bg-black/[2%] aspect-[5/6] overflow-hidden'>
                 <img
                   class='max-w-full w-full absolute m-auto inset-0 h-auto z-0 visible object-cover'
-                  alt=${`${goodsName}`}
+                  alt='레플리카 퍼티그 팬츠 [카키]'
                   aria-hidden='true'
-                  src=${`${thumbnail}`}
+                  src='https://image.msscdn.net/thumbnails/images/goods_img/20200928/1627892/1627892_16760185316606_big.jpg?w=780'
                   loading='lazy'
                   fetchpriority='auto'
                 ></img>
               </div>
             </a>
-      <button class='sc-ktwOfi guykBd sc-dJGMql iSPiuY my-like-btn ${isLiked ? 'liked' : ''}' aria-label='좋아요 버튼'>
-              <div class="inline-flex" style="transform: none;">
-                <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class=""><path d="M9.80392 16.3294C9.91639 16.4275 10.0836 16.4275 10.1961 16.3294C11.0801 15.5587 14.7183 12.3692 16.25 10.75C16.9 10 17.5 9 17.5 7.5C17.5 5.25 16 3.5 13.75 3.5C11.85 3.5 10.8 4.65 10 6C9.2 4.65 8.15 3.5 6.25 3.5C4 3.5 2.5 5.25 2.5 7.5C2.5 9 3.1 10 3.75 10.75C5.28165 12.3692 8.91988 15.5587 9.80392 16.3294Z" stroke-miterlimit="10" fill-opacity="1" fill="" stroke="" class="stroke-red fill-red" vector-effect="non-scaling-stroke"></path></svg>
-
-                <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class=""><path d="M9.80392 16.3294C9.91639 16.4275 10.0836 16.4275 10.1961 16.3294C11.0801 15.5587 14.7183 12.3692 16.25 10.75C16.9 10 17.5 9 17.5 7.5C17.5 5.25 16 3.5 13.75 3.5C11.85 3.5 10.8 4.65 10 6C9.2 4.65 8.15 3.5 6.25 3.5C4 3.5 2.5 5.25 2.5 7.5C2.5 9 3.1 10 3.75 10.75C5.28165 12.3692 8.91988 15.5587 9.80392 16.3294Z" stroke-miterlimit="10" fill-opacity="0.3" fill="" stroke="" class="stroke-white fill-gray-500" vector-effect="non-scaling-stroke"></path></svg>
+            <button class='sc-ktwOfi guykBd sc-dJGMql iSPiuY' aria-label='좋아요 버튼'>
+              <div class='inline-flex' style='transform: none;'>
+                <svg
+                  width='100%'
+                  height='100%'
+                  viewBox='0 0 20 20'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                  class=''
+                >
+                  <path
+                    d='M9.80392 16.3294C9.91639 16.4275 10.0836 16.4275 10.1961 16.3294C11.0801 15.5587 14.7183 12.3692 16.25 10.75C16.9 10 17.5 9 17.5 7.5C17.5 5.25 16 3.5 13.75 3.5C11.85 3.5 10.8 4.65 10 6C9.2 4.65 8.15 3.5 6.25 3.5C4 3.5 2.5 5.25 2.5 7.5C2.5 9 3.1 10 3.75 10.75C5.28165 12.3692 8.91988 15.5587 9.80392 16.3294Z'
+                    stroke-miterlimit='10'
+                    fill-opacity='0.3'
+                    fill=''
+                    stroke=''
+                    class='stroke-white fill-gray-500'
+                    vector-effect='non-scaling-stroke'
+                  ></path>
+                </svg>
               </div>
             </button>
           </div>
@@ -93,28 +75,28 @@ function goodsItemTemplate({
           <div class='sc-bZHSRq lckcfh'>
             <div class='sc-kMzELR bXGDph'>
               <a
-                href=${`${brandLinkUrl}`}
+                href='https://www.musinsa.com/brand/musinsastandard'
                 target='_blank'
                 rel='noreferrer'
                 aria-label='브랜드로 이동'
               >
                 <span class='text-body_13px_semi sc-eDLKkx sc-jTQCzO bnDFEJ cMkxIw font-pretendard'>
-                  ${`${brandName}`}
+                  무신사 스탠다드
                 </span>
               </a>
               <a
-                href=${`${goodsLinkUrl}`}
+                href='https://www.musinsa.com/app/goods/1627892'
                 target='_blank'
                 rel='noreferrer'
                 class='gtm-select-item'
-                data-item-id=${`${goodsNo}`}
-                data-price=${`${price}`}
-                data-original-price=${`${normalPrice}`}
-                data-item-brand=${`${brand}`}
+                data-item-id='1627892'
+                data-price='39490'
+                data-original-price='43900'
+                data-item-brand='musinsastandard'
                 data-quantity='1'
                 data-item-category='(not set)'
-                data-discount=${`${price - normalPrice}`}
-                data-discount-rate=${`${saleRate}`}
+                data-discount='4410'
+                data-discount-rate='10'
                 data-item-list-id='goods_list'
                 data-item-list-index='3'
                 data-index='3'
@@ -124,16 +106,12 @@ function goodsItemTemplate({
                 data-item-applied-filter-group-2='(not set)'
               >
                 <span class='text-body_13px_reg sc-eDLKkx sc-gLLuof bnDFEJ jtzgBJ font-pretendard'>
-                  ${`${goodsName}`}
+                  레플리카 퍼티그 팬츠 [카키]
                 </span>
               </a>
               <div class='sc-guDLey sc-dmyCSP jlrYiO tzoUH'>
-                ${
-                  saleRate > 0
-                    ? `<span class='text-body_13px_semi sc-hLQSwg iXeGsA text-red font-pretendard'>${`${saleRate}`}%</span>`
-                    : ''
-                }
-                <span class='text-body_13px_semi sc-hLQSwg iXeGsA font-pretendard'>${`${price.toLocaleString()}`}원</span>
+                <span class='text-body_13px_semi sc-hLQSwg iXeGsA text-red font-pretendard'>10%</span>
+                <span class='text-body_13px_semi sc-hLQSwg iXeGsA font-pretendard'>39,490원</span>
               </div>
             </div>
             <div class='sc-qZrbh euUmLF'>
@@ -156,7 +134,7 @@ function goodsItemTemplate({
                     vector-effect='non-scaling-stroke'
                   ></path>
                 </svg>
-                <span class='text-etc_11px_reg text-red font-pretendard'>${`${formatNumber(likeCount)}`}</span>
+                <span class='text-etc_11px_reg text-red font-pretendard'>3.2만</span>
               </div>
               <div class='sc-jsEeTM dizzij'>
                 <svg
@@ -174,13 +152,18 @@ function goodsItemTemplate({
                   ></path>
                 </svg>
                 <div class='sc-kFCroH fyDqTQ'>
-              <span class='text-etc_11px_reg text-yellow font-pretendard'>${`${(reviewScore / 20).toFixed(1)}`}</span>
-                  <span class='text-etc_11px_reg text-yellow font-pretendard'>(${`${formatNumber(reviewCount)}`})</span>
+                  <span class='text-etc_11px_reg text-yellow font-pretendard'>4.8</span>
+                  <span class='text-etc_11px_reg text-yellow font-pretendard'>(2만+)</span>
                 </div>
               </div>
             </div>
             <div class='sc-guDLey sc-jIBlqr jlrYiO dWwHhz'>
-              ${goodsLabelHTML}
+              <span
+                class='inline text-etc_11px_reg py-[1px] px-1 rounded-sm h-4 text-white bg-gray-500 bg-opacity-10 sc-bBkKde jbyWrG'
+                title='PLUS_DELIVERY'
+              >
+                <span class='text-etc_11px_reg text-gray-600 font-pretendard'>PLUS배송</span>
+              </span>
             </div>
             <div class='pt-3'>
               <div class='relative'>
@@ -229,5 +212,7 @@ function goodsItemTemplate({
         </div>
       </div>
     </div>
-  `;
+  );
 }
+
+export default temp;

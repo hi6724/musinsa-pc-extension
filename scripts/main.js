@@ -1,18 +1,13 @@
 const callback = [];
 
 async function handleRouteChange(oldHref) {
-  // 상세 검색
-  const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/musinsa\/goods(\?.*)?$/;
-  // 검색 결과
-  const categoriesPattern = /^https:\/\/www\.musinsa\.com\/categories(\?.*)?$/;
-
-  if (searchDetailPattern.test(location.href)) {
-    window.location.reload();
-    return;
-  } else if (categoriesPattern.test(location.href)) {
-    window.location.reload();
+  const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/goods(\?.*)?$/;
+  if (oldHref && oldHref === document.location.href) return;
+  if (searchDetailPattern.test(document.location.href)) {
+    await initSearchDetailPage();
     return;
   }
+  location.href.includes('category') && (await initCategoryPage());
 }
 
 async function init() {

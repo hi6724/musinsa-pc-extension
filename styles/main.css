@@ -1,17 +1,13 @@
 /* https://www.musinsa.com/main/116 */
 
 @media (min-width: 1200px) {
-  .dlPMIU,
-  .byfLRW,
-  .hPnxcj,
-  .dserkL {
-    display: none !important;
-  }
-
-  .is-web,
-  .yMDns,
-  .iwMOXK {
-    max-width: 1200px !important;
+  /* 카테고리(hdUJFm), 검색결과(.dBXfGP) 기존 상품 컨테이너 숨기기 */
+  .hbUJFm,
+  .dBXfGP {
+    opacity: 0 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    height: 0 !important;
   }
 
   .goods-container {
@@ -20,91 +16,47 @@
     grid-template-columns: repeat(8, 1fr);
     position: relative;
   }
-
-  .container {
-    max-width: 1200px !important;
-    width: 100% !important;
+  /*  */
+  #commonLayoutContainer::before,
+  #commonLayoutContainer::after {
+    display: none !important;
   }
+
+  * {
+    --max-width: 1200px !important;
+  }
+
   /* 메인페이지 최상단 캐러셀 크기 */
-  .gbZQLx,
-  .iNjCKn,
-  .RBple {
+  .swiper {
     max-width: 600px !important;
-    margin: 0 auto !important;
   }
-
-  .gUrkss,
-  .bCblye {
-    grid-auto-columns: calc(12.5% - 3.33333px) !important;
-  }
-  .hoyWeE {
-    grid-auto-columns: calc(25% - 2.5px) !important;
-  }
-  .fEHdBC {
-    grid-template-rows: repeat(2, 1fr) !important;
-    grid-auto-columns: calc(20% - 3px) !important;
-  }
-
-  .jKFoVr > div {
+  /* qr코드 */
+  ._qr_1g9ok_1 {
     display: none !important;
   }
 
-  /* 양옆 세로선 제거 */
-  .container::after,
-  .container::before {
-    z-index: -1 !important;
-    opacity: 0 !important;
-  }
-  /* 광고 제거 */
-  .gvLqcR {
-    display: none !important;
-  }
-
-  .cta-DVS {
+  /* 랭킹 */
+  .dKOtPP {
     display: grid !important;
-    padding: 0 !important;
-    grid-template-columns: repeat(8, 150px) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
   }
-  .bJUNen {
-    width: 100% !important;
+  .dKOtPP > :nth-child(1),
+  .dKOtPP > :nth-child(2),
+  .dKOtPP > :nth-child(3) {
+    grid-column: 1 / span 3 !important;
   }
 
   /* 하단 nav 좌측으로 */
-  .common-layout__sc-ors8kb-2 {
+  ._gnb__menu_1tp1k_13 {
     flex-direction: column !important;
     left: calc(50% - 670px) !important;
     top: 0 !important;
+    min-width: 70px !important;
     width: 70px !important;
     margin: 0 !important;
     padding: 0 !important;
     border-right: 1px solid rgba(0, 0, 0, 0.6) !important;
     z-index: -1 !important;
-  }
-
-  .common-layout__sc-ors8kb-3 {
-    width: 100% !important;
-    flex-basis: auto !important;
-  }
-
-  /* 우축 플로팅 */
-  .common-layout__sc-4fnf6u-0 {
-    transform: translateX(0) !important;
-    right: 16px !important;
-  }
-  /* 좌측 플로팅 */
-  .common-layout__sc-7os1cp-0 {
-    transform: translateX(0) !important;
-    left: 64px !important;
-  }
-
-  /* 카테고리 바 */
-  .fRrzci {
-    width: 600px;
-    left: calc(50% - 300px);
-  }
-  /* 검색 필터 */
-  .iucaCN {
-    width: 600px !important;
   }
 
   .pagination {
@@ -158,19 +110,14 @@
     opacity: 0.5;
   }
 
-  .sc-1q5dvtp-2.liked > :nth-child(2) {
-    display: none;
-  }
-  .OvWlJ.liked > :nth-child(2) {
+  .my-like-btn.liked > div > :nth-child(2) {
     display: none;
   }
 
-  .sc-1q5dvtp-2:not(.liked) > :nth-child(1) {
+  .my-like-btn:not(.liked) > div > :nth-child(1) {
     display: none;
   }
-  .OvWlJ:not(.liked) > :nth-child(1) {
-    display: none;
-  }
+
   .eGmYVg,
   .dREizi {
     transform: scale(1) !important;
@@ -191,30 +138,18 @@
 }
 
 @media (min-width: 1701px) {
-  .container,
-  .is-web,
-  .yMDns,
-  .iwMOXK {
-    max-width: 1500px !important;
+  * {
+    --max-width: 1500px !important;
   }
+
   .cta-DVS {
     grid-template-columns: repeat(10, 150px) !important;
   }
-  .common-layout__sc-ors8kb-2 {
+  ._gnb__menu_1tp1k_13 {
     left: calc(50% - 820px) !important;
   }
+
   .goods-container {
     grid-template-columns: repeat(10, 1fr);
   }
-}
-
-.crpSRG {
-  display: inline-flex;
-  -webkit-box-align: center;
-  align-items: center;
-  height: 100%;
-  font-family: Musinsa, 'Apple SD Gothic Neo', Roboto, 'Noto Sans KR', 'sans-serif';
-  font-size: 10px;
-  color: rgb(255, 146, 58);
-  line-height: 1;
 }

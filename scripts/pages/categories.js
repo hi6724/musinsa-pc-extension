@@ -3,13 +3,15 @@ function parseAndJoinIDs(inputString) {
   const ids = items.map((item) => item.split(':')[0]);
   return ids.join(',');
 }
-async function searchHandler() {
-  const urlPattern = /^https:\/\/www\.musinsa\.com\/categories\/.*(\?.*)?$/;
+
+async function categorySearchHandler() {
+  const categoryUrlPattern = /^https:\/\/www\.musinsa\.com\/category\/.*(\?.*)?$/;
+  if (!categoryUrlPattern.test(window.location.href)) return;
+
   const container = document.querySelector('.goods-container');
   const pagination = document.querySelector('.pagination');
   pagination.innerHTML = '';
   container.innerHTML = '';
-  if (!urlPattern.test(window.location.href)) return;
 
   const query = getQueryParams(window.location.search);
   const baseUrl = setCategoryFilters();
@@ -20,7 +22,8 @@ async function searchHandler() {
     })
   ).json();
 
-  const goods = data.data.goodsList;
+  const goods = data.data.list;
+  const paginationData = data.data.pagination;
 
   const ids = goods.map((item) => item.goodsNo);
   const likeRequestUrl = new URL('https://like.musinsa.com/like/api/v2/liketypes/goods/counts');
@@ -41,7 +44,6 @@ async function searchHandler() {
     goodsItemElement.className = 'goods-item';
     goodsItemElement.innerHTML = categoryItemTemplate({
       ...goodsItem,
-      relatedGoodsReviewCount: +goodsItem.relatedGoodsReviewCount,
       likeCount: +likeData[i].count,
       isLiked: likeData[i].liked,
     });
@@ -63,18 +65,23 @@ async function searchHandler() {
 
   pagination.innerHTML = paginationTemplate({
     currentPage: query.page ?? 1,
-    lastPage: Math.ceil(data.data.totalCount / 100),
+    lastPage: paginationData.totalPages,
   });
 
   const main = document.querySelector('main');
   main.appendChild(container);
 }
 
-async function initsearchGoods() {
+async function initCategoryPage() {
   if (window.innerWidth < 1200) return;
-  await wait(500);
-  let oldHref = document.location.href;
-  const body = document.querySelector('body');
+  const categoryUrlPattern = /^https:\/\/www\.musinsa\.com\/category\/.*(\?.*)?$/;
+  if (!categoryUrlPattern.test(window.location.href)) return;
+
+  const prevGoodsContainer = document.querySelector('.goods-container');
+  const prevPagination = document.querySelector('.pagination');
+  if (prevGoodsContainer) prevGoodsContainer.remove();
+  if (prevPagination) prevPagination.remove();
+
   const container = document.createElement('div');
   container.className = 'goods-container';
 
@@ -82,28 +89,12 @@ async function initsearchGoods() {
   pagination.className = 'pagination';
   pagination.addEventListener('click', (e) => {
     handlePageClick(e);
-    searchHandler();
+    categorySearchHandler();
   });
 
   const main = document.querySelector('body>div');
   main.appendChild(container);
   main.appendChild(pagination);
 
-  const observer = new MutationObserver(async (mutations) => {
-    if (oldHref === document.location.href) return;
-    oldHref = document.location.href;
-    searchHandler();
-  });
-
-  observer.observe(body, { childList: true, subtree: true });
-
-  window.addEventListener('popstate', () => {
-    if (oldHref !== document.location.href) {
-      oldHref = document.location.href;
-      searchHandler();
-    }
-  });
-
-  searchHandler();
+  categorySearchHandler();
 }
-window.onload = initsearchGoods;

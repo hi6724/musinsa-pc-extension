@@ -1,164 +1,250 @@
 function categoryItemTemplate({
   goodsNo,
   goodsName,
-  linkUrl,
-  imageUrl,
+  goodsLinkUrl,
+  thumbnail,
+  displayGenderText,
+  isSoldOut,
   normalPrice,
   price,
   saleRate,
+  brand,
   brandName,
   brandLinkUrl,
-  relatedGoodsReviewCount,
-  relatedGoodsReviewScore,
-  goodsLabel,
+  reviewCount,
+  reviewScore,
+  isOptionVisible,
+  isAd,
+  infoLabelList,
+  imageLabelList,
+  clickTrackers,
+  impressionTrackers,
+  snap,
   likeCount,
   isLiked,
 }) {
-  const goodsLabelHTML = goodsLabel
-    .map((label) => {
-      if (label.code === 'PLUS_DELIVERY')
-        return `<span class="category__sc-1s8gukf-1 ihrQlY"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="22" fill="black"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M13.6249 7.43281H6.55387V6H15.0658L15.0646 7.59999L17.371 7.60185L20 10.3228V15.2507H18.6551C18.3465 16.3164 17.3594 17.0959 16.189 17.0959C15.0096 17.0959 14.016 16.304 13.7159 15.2254H11.5856C11.2855 16.3039 10.2921 17.0959 9.11249 17.0959C7.69523 17.0959 6.5464 15.9524 6.5464 14.5424V13.8006H7.98625V14.5424C7.98625 15.1612 8.49052 15.6631 9.11249 15.6631C9.73437 15.6631 10.2386 15.1613 10.2386 14.5424V13.8006H11.483V13.7926H13.6231V8.58908H13.624L13.6249 7.43281ZM15.0629 9.0328V14.5423C15.0629 15.1613 15.5672 15.6631 16.189 15.6631C16.8111 15.6631 17.3152 15.1613 17.3152 14.5423V13.8008H18.5602V10.8999L16.7575 9.03416L15.0629 9.0328ZM5.84808 11.2558V13.6511H4.40823V11.2558H2V9.82294H4.40823V7.42746H5.84808V9.82294H8.25418V11.2558H5.84808Z" fill="white"></path></svg></span>`;
-      else if (label.code === 'EXCLUSIVE_LIMIT')
-        return `
-          <span class="category__sc-1s8gukf-1 TLcQ">${label.badgeShortTitle}</span>
-      `;
-      else if (label.code === 'EXCLUSIVE_MUSINSA')
-        return `
-          <span class="category__sc-1s8gukf-1 ccUkok">${label.badgeShortTitle}</span>
-      `;
-      else if (label.code === 'OUTLET')
-        return `
-          <span class="category__sc-1s8gukf-1 bLrMfP">${label.badgeShortTitle}</span>
-      `;
-      else
-        return `
-          <span class="category__sc-1s8gukf-1 exQRko">${label.badgeShortTitle}</span>
-      `;
+  const goodsLabelHTML = infoLabelList
+    .map((data) => {
+      const { code, title, color } = data;
+      return `<span
+              class="inline text-etc_11px_reg py-[1px] px-1 rounded-sm h-4 text-white bg-gray-500 bg-opacity-10 sc-fHjqbK kknBSr"
+              title=${`${code}`}
+            >
+              <span class="text-etc_11px_reg text-gray-600 font-pretendard">${`${title}`}</span>
+            </span>`;
     })
     .join('');
 
   return `
-    <div
-      class='category__sc-rb2kzk-0 irgXw'
-      data-goodsno='${goodsNo}'
-      data-price='${normalPrice}'
-      data-dimension17='${saleRate}'
-      data-dimension18='PLP_goods'
-      data-brand='${brandName}'
-      data-position='1'
-      data-gtm-cd-18='PLP_goods'
-      data-gtm-cd-20='/category'
-      data-gtm-action='impression'
-      data-gtm-category='Ecommerce'
-      data-visible-gtm-action='Impressions'
-      data-visible-gtm-label='Impression View'
-      data-gtm-cd-30=''
-      data-dimension30=''
-      data-gtm-cd-31='dprd_cate_sort_deepfm_v0'
-      data-dimension31='dprd_cate_sort_deepfm_v0'
-      data-gtm-cd-51='segment|segment_99_N|score|${relatedGoodsReviewScore}'
-      data-dimension51='segment|segment_99_N|score|${relatedGoodsReviewScore}'
-    >
-      <div class='category__sc-rb2kzk-5 hWLdIX'>
-        <figure class='category__sc-rb2kzk-6 AENnw'>
+    <div class="sc-fUnNpA iCowMw">
+      <div class="sc-hzhKNl lmHEaa">
+        <div class="sc-eDPFhE gKpBep">
           <a
-            class='category__sc-rb2kzk-7 ksmIyr'
-            href='${linkUrl}'
-            title='${brandName}(takeasy) ${goodsName} 자세히 보기'
-          ></a>
-          <div class='category__sc-rb2kzk-8 dYOBiv'>
-            <img
-              class='category__sc-rb2kzk-9 eSSKjG'
-              id='thumb|${goodsNo}'
-              src='${imageUrl}'
-              alt='${brandName}(takeasy) ${goodsName}'
-            />
-          </div>
-        </figure>
-      <button type="button" class="category__sc-1xj7o0v-2 OvWlJ gtm-catch-click active
-      ${isLiked ? 'liked' : ''}"
-      data-gtm-action="like.product.cancel" data-gtm-cd-23="PLP_goods" data-gtm-cd-19="button" data-gtm-cd-20="/category" data-gtm-cd-21="3" data-gtm-category="PLP_goods" data-gtm-label="4240536">
+            href="https://www.musinsa.com/app/goods/4238600"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="상품 상세로 이동"
+            class="sc-eldOKa eYuOFs gtm-view-item-list gtm-select-item"
+            data-item-id=${`${goodsNo}`}
+            data-price=${`${price}`}
+            data-original-price=${`${normalPrice}`}
+            data-item-brand=${`${brandName}`}
+            data-quantity="1"
+            data-item-category="(not set)"
+            data-discount=${`${normalPrice - price}`}
+            data-discount-rate=${`${saleRate}`}
+            data-item-list-id="plp_goods"
+            data-item-list-index="3"
+            data-section-name="plp_goods"
+            data-section-index="5"
+            data-index="(not set)"
+            data-brand-id=${`${brandName}`}
+            data-item-applied-filter-group-1="(not set)"
+            data-item-applied-filter-group-2="(not set)"
+            data-gtm-vis-recent-on-screen126662172_123="8824"
+            data-gtm-vis-first-on-screen126662172_123="8824"
+            data-gtm-vis-total-visible-time126662172_123="2500"
+            data-gtm-vis-recent-on-screen126662172_1962="8824"
+            data-gtm-vis-first-on-screen126662172_1962="8824"
+            data-gtm-vis-total-visible-time126662172_1962="2500"
+            data-gtm-vis-has-fired126662172_123="1"
+            data-gtm-vis-has-fired126662172_1962="1"
+          >
+            <div class="relative z-5 inline-flex items-center justify-center w-full h-full before:absolute before:inset-0 before:size-full before:z-5 before:overflow-hidden min-w-8 min-h-[38px] before:bg-black/[2%] aspect-[5/6] overflow-hidden">
+              <img
+                class="max-w-full w-full absolute m-auto inset-0 h-auto z-0 visible object-cover"
+                alt=${`${goodsName}`}
+                aria-hidden="true"
+                src=${`${thumbnail}`}
+                loading="lazy"
+                fetchpriority="auto"
+              />
+            </div>
+          </a>
+      <button class="sc-cPiJYC eDZaif sc-ikkyvV ioTNa-d my-like-btn ${isLiked ? 'liked' : ''}" aria-label="좋아요 버튼">
+            <div class="inline-flex" style="transform: none;">
+              <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class=""><path d="M9.80392 16.3294C9.91639 16.4275 10.0836 16.4275 10.1961 16.3294C11.0801 15.5587 14.7183 12.3692 16.25 10.75C16.9 10 17.5 9 17.5 7.5C17.5 5.25 16 3.5 13.75 3.5C11.85 3.5 10.8 4.65 10 6C9.2 4.65 8.15 3.5 6.25 3.5C4 3.5 2.5 5.25 2.5 7.5C2.5 9 3.1 10 3.75 10.75C5.28165 12.3692 8.91988 15.5587 9.80392 16.3294Z" stroke-miterlimit="10" fill-opacity="1" fill="" stroke="" class="stroke-red fill-red" vector-effect="non-scaling-stroke"></path></svg>
 
-        <svg width="1em" height="1em" viewBox="0 0 30 30" fill="#ff0000" xmlns="http://www.w3.org/2000/svg" color="#ff0000" class="sc-1q5dvtp-0 epynNi"><path d="M24.1159 7.60884C21.9708 5.46372 18.4929 5.46372 16.3477 7.60884L16 7.95658L14.9765 8.98003L13.6523 7.65578C11.5072 5.51066 8.02923 5.51065 5.88411 7.65578C3.73899 9.8009 3.73899 13.2788 5.88411 15.424L14.9991 24.539L18.5247 21.0134C18.6733 20.8647 18.8126 20.7102 18.9424 20.5505L24.1159 15.377C26.261 13.2319 26.261 9.75397 24.1159 7.60884Z" stroke="currentColor" vector-effect="non-scaling-stroke"></path></svg>
+              <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class=""><path d="M9.80392 16.3294C9.91639 16.4275 10.0836 16.4275 10.1961 16.3294C11.0801 15.5587 14.7183 12.3692 16.25 10.75C16.9 10 17.5 9 17.5 7.5C17.5 5.25 16 3.5 13.75 3.5C11.85 3.5 10.8 4.65 10 6C9.2 4.65 8.15 3.5 6.25 3.5C4 3.5 2.5 5.25 2.5 7.5C2.5 9 3.1 10 3.75 10.75C5.28165 12.3692 8.91988 15.5587 9.80392 16.3294Z" stroke-miterlimit="10" fill-opacity="0.3" fill="" stroke="" class="stroke-white fill-gray-500" vector-effect="non-scaling-stroke"></path></svg>
+            </div>
+          </button>
 
-      <svg width="1em" height="1em" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffffff" class="category__sc-1xj7o0v-1 eGmYVg"><path d="M24.1159 7.60884C21.9708 5.46372 18.4929 5.46372 16.3477 7.60884L16 7.95658L14.9765 8.98003L13.6523 7.65578C11.5072 5.51066 8.02923 5.51065 5.88411 7.65578C3.73899 9.8009 3.73899 13.2788 5.88411 15.424L14.9991 24.539L18.5247 21.0134C18.6733 20.8647 18.8126 20.7102 18.9424 20.5505L24.1159 15.377C26.261 13.2319 26.261 9.75397 24.1159 7.60884Z" stroke="currentColor" vector-effect="non-scaling-stroke"></path></svg>
-      </button>
-
-
-        <div class="category__sc-1s8gukf-0 giyXT">
-          ${goodsLabelHTML}
         </div>
       </div>
-      <div aria-labelledby='thumb|${goodsNo}' class='category__sc-rb2kzk-10 cjDxkP'>
-        <a
-          class='category__sc-rb2kzk-11 kPDCPR'
-          title='${brandName} 샵으로 이동'
-          href='${brandLinkUrl}'
-        >
-          ${brandName}
-        </a>
-        <a
-          class='category__sc-rb2kzk-12 gBkfRU'
-          title='${goodsName} 상품 상세 보기로 이동'
-          href='${linkUrl}'
-        >
-          ${goodsName}
-        </a>
-        <div class='category__sc-rb2kzk-13 qViG'>
-          <div class='category__sc-79f6w4-0 hoYOuK'>
-            <div class='category__sc-79f6w4-1 jnXOfj'>
-              <div class='category__sc-79f6w4-2 eDQQUl'>
-                <div class='category__sc-79f6w4-4 dPcEFH'>
-                  <span aria-label='판매가격' class='category__sc-79f6w4-5 eTRmwC'>
-                    ${price.toLocaleString()}원
-                  </span>
-                </div>
-              </div>
+      <div class="sc-bmzXxz kxGyUM">
+        <div class="sc-iHGNiK buEwob">
+          <div class="sc-dtBeHJ iFyEFD">
+            <a
+              href=${`${brandLinkUrl}`}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="브랜드로 이동"
+            >
+              <span class="text-body_13px_semi sc-dcJtft sc-iGgVNO jEEFmT laXDWb font-pretendard">
+                ${`${brandName}`}
+              </span>
+            </a>
+            <a
+              href=${`${goodsLinkUrl}`}
+              target="_blank"
+              rel="noreferrer"
+              class="gtm-select-item"
+              data-item-id=${`${goodsNo}`}
+              data-price=${`${price}`}
+              data-original-price=${`${normalPrice}`}
+              data-item-brand=${`${brand}`}
+              data-quantity="1"
+              data-item-category="(not set)"
+              data-discount=${`${normalPrice - price}`}
+              data-discount-rate=${`${saleRate}`}
+              data-item-list-id="plp_goods"
+              data-item-list-index="3"
+              data-section-name="plp_goods"
+              data-section-index="5"
+              data-index="(not set)"
+              data-brand-id=${`${brandName}`}
+              data-item-applied-filter-group-1="(not set)"
+              data-item-applied-filter-group-2="(not set)"
+            >
+              <span class="text-body_13px_reg sc-dcJtft sc-gsFSjX jEEFmT ecuaTR font-pretendard">
+                ${`${goodsName}`}
+              </span>
+            </a>
+            <div class="sc-gEvDqW sc-eqUzNf hXonC kyQaBg">
               ${
                 saleRate > 0
-                  ? `<strong aria-label='할인율' class='category__sc-79f6w4-9 jNpLBZ'>
-                ${saleRate}%
-              </strong>`
+                  ? `<span class="text-body_13px_semi sc-fqkwJk ioeSYE text-red font-pretendard">${`${saleRate}`}%</span>`
                   : ''
               }
-            </div>
-            ${
-              saleRate > 0
-                ? `<del aria-label='정상가격' class='category__sc-79f6w4-6 iHtcSg'>
-              ${normalPrice.toLocaleString()}원
-            </del>`
-                : ''
-            }
-          </div>
-          <div class='category__sc-rb2kzk-14 kPhfC'>
-            <div class='category__sc-rb2kzk-15 FDcJf'>
-              <svg width='14px' height='14px' viewBox='0 0 14 14' version='1.1'>
-                <title>좋아요 수</title>
-                <g stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'>
-                  <path
-                    d='M11.375,3.375 C12.4105339,4.41053391 12.4105339,6.08946609 11.375,7.125 L7,11.5 L2.625,7.125 C1.58946609,6.08946609 1.58946609,4.41053391 2.625,3.375 C3.66053391,2.33946609 5.33946609,2.33946609 6.375,3.375 L6.375,3.375 L6.99934957,3.99934957 L7.625,3.375 C8.66053391,2.33946609 10.3394661,2.33946609 11.375,3.375 Z'
-                    fill='red'
-                  ></path>
-                </g>
-              </svg>
-              ${formatNumber(likeCount)}
-            </div>
-            <div class='category__sc-10xoa7r-0 crpSRG'>
-              <div class='category__sc-10xoa7r-1 ielfuX'>
-                <svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'>
-                  <title>평가수</title>
-                  <path
-                    fill='#FF923A'
-                    fill-rule='evenodd'
-                    d='M7 10.278L3.292 12.4 4.24 8.345 1 5.602 5.294 5.218 7 1.4 8.706 5.218 13 5.602 9.76 8.345 10.708 12.4z'
-                  ></path>
-                </svg>
-              </div>
-${formatNumber(relatedGoodsReviewCount)} / ${(relatedGoodsReviewScore / 20).toFixed(1)}
+              <span class="text-body_13px_semi sc-fqkwJk ioeSYE font-pretendard">${`${price.toLocaleString()}`}원</span>
             </div>
           </div>
+
+  <div class='sc-jXbVAB fhQyNH'>
+      <div class='sc-dhKdPU dYtGx'>
+        <svg
+          width='100%'
+          height='100%'
+          viewBox='0 0 20 20'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          class='sc-dAlxHm bxEqYu'
+        >
+          <path
+            d='M9.80392 16.3294C9.91639 16.4275 10.0836 16.4275 10.1961 16.3294C11.0801 15.5587 14.7183 12.3692 16.25 10.75C16.9 10 17.5 9 17.5 7.5C17.5 5.25 16 3.5 13.75 3.5C11.85 3.5 10.8 4.65 10 6C9.2 4.65 8.15 3.5 6.25 3.5C4 3.5 2.5 5.25 2.5 7.5C2.5 9 3.1 10 3.75 10.75C5.28165 12.3692 8.91988 15.5587 9.80392 16.3294Z'
+            stroke-miterlimit='10'
+            fill-opacity='1'
+            fill=''
+            stroke=''
+            class='stroke-red fill-red'
+            vector-effect='non-scaling-stroke'
+          ></path>
+        </svg>
+        <span class='text-etc_11px_reg text-red font-pretendard'>${`${formatNumber(likeCount)}`}</span>
+      </div>
+      <div class='sc-dhKdPU dYtGx'>
+        <svg
+          width='100%'
+          height='100%'
+          viewBox='0 0 20 20'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          class='sc-jlZhRR fHHKvu'
+        >
+          <path
+            d='M10.2707 1.06689C10.162 0.839265 9.83799 0.839265 9.72928 1.06689L7.16594 6.43467C7.12297 6.52464 7.03812 6.58739 6.9395 6.60211L1.0893 7.4751C0.84556 7.51147 0.747211 7.80993 0.921583 7.98408L5.14053 12.1976C5.20921 12.2662 5.24046 12.3638 5.2244 12.4595L4.22835 18.3961C4.18708 18.6422 4.44661 18.8281 4.6663 18.71L9.85791 15.9182C9.94663 15.8705 10.0534 15.8705 10.1421 15.9182L15.3337 18.71C15.5534 18.8281 15.8129 18.6422 15.7716 18.3961L14.7756 12.4597C14.7595 12.3639 14.7909 12.2662 14.8596 12.1976L19.0783 7.99024C19.2527 7.81625 19.1547 7.51776 18.911 7.48116L13.0603 6.60223C12.9618 6.58744 12.8771 6.52472 12.8341 6.43484L10.2707 1.06689Z'
+            class='fill-yellow'
+            vector-effect='non-scaling-stroke'
+          ></path>
+        </svg>
+        <div class='sc-kpDprT jwNDra'>
+          <span class='text-etc_11px_reg text-yellow font-pretendard'>${`${(reviewScore / 20).toFixed(1)}`}</span>
+          <span class='text-etc_11px_reg text-yellow font-pretendard'>(${`${formatNumber(reviewCount)}`})</span>
         </div>
       </div>
     </div>
-  `;
+
+
+          <div class="sc-gEvDqW sc-dtImxT hXonC cvmTLN">
+            ${goodsLabelHTML}
+          </div>
+          <div class="pt-3">
+            <div class="relative">
+              <div
+                class="block sc-hmdnzv kFfvIX gtm-click-button"
+                tabindex="0"
+                data-index="(not set)"
+                data-section-name="plp_goods"
+                data-section-index="5"
+                data-brand-id="urbandtype"
+                data-item-list-id="plp_goods"
+                data-item-list-index="3"
+                data-item-applied-filter-group-1="(not set)"
+                data-item-applied-filter-group-2="(not set)"
+                data-button-id="goods_option"
+                data-button-name="상품옵션 열기"
+              >
+                <div style="position: relative;">
+                  <div class="flex items-center relative">
+                    <button type="button" class="sc-bXCLgj ecbxkW">
+                      <span class="text-etc_11px_reg font-normal text-gray-500 font-pretendard">
+                        옵션
+                      </span>
+                      <span class="sc-jsJARu hkbYuP">
+                        <svg
+                          width="100%"
+                          height="100%"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-black"
+                          fill="none"
+                        >
+                          <path
+                            d="M4 8L9.78787 13.7879C9.90503 13.905 10.095 13.905 10.2121 13.7879L16 8"
+                            class="stroke-gray-500"
+                            vector-effect="non-scaling-stroke"
+                          ></path>
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <span class="text-etc_11px_reg absolute top-0 right-0 text-gray-500 font-pretendard">
+                남성
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
 }
+
+// <button type="button" class="category__sc-1xj7o0v-2 OvWlJ gtm-catch-click active
+// ${isLiked ? 'liked' : ''}"
+// data-gtm-action="like.product.cancel" data-gtm-cd-23="PLP_goods" data-gtm-cd-19="button" data-gtm-cd-20="/category" data-gtm-cd-21="3" data-gtm-category="PLP_goods" data-gtm-label="4240536">
+
+//   <svg width="1em" height="1em" viewBox="0 0 30 30" fill="#ff0000" xmlns="http://www.w3.org/2000/svg" color="#ff0000" class="sc-1q5dvtp-0 epynNi"><path d="M24.1159 7.60884C21.9708 5.46372 18.4929 5.46372 16.3477 7.60884L16 7.95658L14.9765 8.98003L13.6523 7.65578C11.5072 5.51066 8.02923 5.51065 5.88411 7.65578C3.73899 9.8009 3.73899 13.2788 5.88411 15.424L14.9991 24.539L18.5247 21.0134C18.6733 20.8647 18.8126 20.7102 18.9424 20.5505L24.1159 15.377C26.261 13.2319 26.261 9.75397 24.1159 7.60884Z" stroke="currentColor" vector-effect="non-scaling-stroke"></path></svg>
+
+// <svg width="1em" height="1em" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffffff" class="category__sc-1xj7o0v-1 eGmYVg"><path d="M24.1159 7.60884C21.9708 5.46372 18.4929 5.46372 16.3477 7.60884L16 7.95658L14.9765 8.98003L13.6523 7.65578C11.5072 5.51066 8.02923 5.51065 5.88411 7.65578C3.73899 9.8009 3.73899 13.2788 5.88411 15.424L14.9991 24.539L18.5247 21.0134C18.6733 20.8647 18.8126 20.7102 18.9424 20.5505L24.1159 15.377C26.261 13.2319 26.261 9.75397 24.1159 7.60884Z" stroke="currentColor" vector-effect="non-scaling-stroke"></path></svg>
+// </button>

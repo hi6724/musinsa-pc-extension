@@ -3,20 +3,27 @@ function parseAndJoinIDs(inputString) {
   const ids = items.map((item) => item.split(':')[0]);
   return ids.join(',');
 }
-async function searchHandler() {
-  const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/musinsa\/goods(\?.*)?$/;
+
+async function searchDetailHandler() {
+  const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/goods(\?.*)?$/;
+  if (!searchDetailPattern.test(window.location.href)) return;
+
   const container = document.querySelector('.goods-container');
   const pagination = document.querySelector('.pagination');
-
   pagination.innerHTML = '';
   container.innerHTML = '';
-  if (!searchDetailPattern.test(window.location.href)) return;
 
   const query = getQueryParams(window.location.search);
   const baseUrl = setSearchFilters();
-  const data = await (await fetch(baseUrl.toString(), { credentials: 'include' })).json();
+  const data = await (
+    await fetch(baseUrl.toString(), {
+      credentials: 'include',
+    })
+  ).json();
 
   const goods = data.data.list;
+  const paginationData = data.data.pagination;
+
   const ids = goods.map((item) => item.goodsNo);
   const likeRequestUrl = new URL('https://like.musinsa.com/like/api/v2/liketypes/goods/counts');
   const likeResponse = await (
@@ -29,8 +36,8 @@ async function searchHandler() {
       body: JSON.stringify({ relationIds: ids }),
     })
   ).json();
-
   const likeData = likeResponse.data.contents.items;
+
   goods.forEach((goodsItem, i) => {
     const goodsItemElement = document.createElement('div');
     goodsItemElement.className = 'goods-item';
@@ -43,7 +50,8 @@ async function searchHandler() {
     likeBtn.addEventListener('click', () => {
       const isLiked = likeBtn.classList.contains('liked');
       likeBtn.classList.toggle('liked');
-      fetch(`https://like.musinsa.com/like/api/v1/members/liketypes/goods/relations/${goodsItem.goodsNo}`, {
+      const goodsNo = goodsItem.goodsNo;
+      fetch(`https://like.musinsa.com/like/api/v1/members/liketypes/goods/relations/${goodsNo}`, {
         method: isLiked ? 'DELETE' : 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,24 +59,28 @@ async function searchHandler() {
         credentials: 'include',
       });
     });
-
     container.appendChild(goodsItemElement);
   });
 
   pagination.innerHTML = paginationTemplate({
     currentPage: query.page ?? 1,
-    lastPage: data.data.lastPage,
+    lastPage: paginationData.totalPages,
   });
 
   const main = document.querySelector('main');
   main.appendChild(container);
 }
 
-async function initsearchGoods() {
+async function initSearchDetailPage() {
   if (window.innerWidth < 1200) return;
-  await wait(500);
-  let oldHref = document.location.href;
-  const body = document.querySelector('body');
+  const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/goods(\?.*)?$/;
+  if (!searchDetailPattern.test(window.location.href)) return;
+
+  const prevGoodsContainer = document.querySelector('.goods-container');
+  const prevPagination = document.querySelector('.pagination');
+  if (prevGoodsContainer) prevGoodsContainer.remove();
+  if (prevPagination) prevPagination.remove();
+
   const container = document.createElement('div');
   container.className = 'goods-container';
 
@@ -76,28 +88,12 @@ async function initsearchGoods() {
   pagination.className = 'pagination';
   pagination.addEventListener('click', (e) => {
     handlePageClick(e);
-    searchHandler();
+    searchDetailHandler();
   });
 
-  const main = document.querySelector('main');
+  const main = document.querySelector('body>div');
   main.appendChild(container);
   main.appendChild(pagination);
 
-  const observer = new MutationObserver(async (mutations) => {
-    if (oldHref === document.location.href) return;
-    oldHref = document.location.href;
-    searchHandler();
-  });
-
-  observer.observe(body, { childList: true, subtree: true });
-
-  window.addEventListener('popstate', () => {
-    if (oldHref !== document.location.href) {
-      oldHref = document.location.href;
-      searchHandler();
-    }
-  });
-
-  searchHandler();
+  searchDetailHandler();
 }
-window.onload = initsearchGoods;
