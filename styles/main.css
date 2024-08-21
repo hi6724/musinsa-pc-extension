@@ -22,8 +22,12 @@
     display: none !important;
   }
 
-  * {
-    --max-width: 1200px !important;
+  #commonLayoutContainer,
+  #commonLayoutHeader {
+    max-width: 1200px !important;
+  }
+  body {
+    max-width: 100vw !important;
   }
 
   /* 메인페이지 최상단 캐러셀 크기 */
@@ -138,8 +142,9 @@
 }
 
 @media (min-width: 1701px) {
-  * {
-    --max-width: 1500px !important;
+  #commonLayoutContainer,
+  #commonLayoutHeader {
+    max-width: 1500px !important;
   }
 
   .cta-DVS {
