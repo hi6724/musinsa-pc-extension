@@ -47,7 +47,7 @@ function goodsItemTemplate({
         <div class='sc-fLseNd ikaYtH'>
           <div class='sc-fmKFGs fObkCV'>
             <a
-              href='https://www.musinsa.com/app/goods/1627892'
+              href=${`${goodsLinkUrl}`}
               target='_blank'
               rel='noreferrer'
               aria-label='상품 상세로 이동'

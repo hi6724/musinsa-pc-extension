@@ -34,7 +34,8 @@
   .bcgdHD,
   .cMopAt,
   .hKUlNI,
-  .cmBdKH {
+  .cmBdKH,
+  ._dim_182gh_37 {
     max-width: 1200px !important;
   }
   body,
@@ -63,19 +64,34 @@
   }
 
   /* 하단 nav 좌측으로 */
-  ._gnb__menu_1tp1k_13 {
-    flex-direction: column !important;
-    left: calc(50% - 670px) !important;
-    top: 0 !important;
-    min-width: 70px !important;
-    width: 70px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.6) !important;
-    z-index: -1 !important;
-  }
+
   #commonLayoutGnb {
     position: fixed !important;
+  }
+
+  #commonLayoutGnb > div > h2 {
+    display: none !important;
+  }
+  #commonLayoutGnb > div > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+    padding: 1.5rem 0 !important;
+    margin: 0 !important;
+
+    position: fixed !important;
+    left: calc(50% - 670px) !important;
+    top: 1.5rem !important;
+    min-width: 70px !important;
+    width: 70px !important;
+    height: fit-content;
+  }
+
+  #commonLayoutGnb > div > div > a {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 
   .pagination {
@@ -166,14 +182,15 @@
   .bcgdHD,
   .cMopAt,
   .hKUlNI,
-  .cmBdKH {
+  .cmBdKH,
+  ._dim_182gh_37 {
     max-width: 1500px !important;
   }
 
   .cta-DVS {
     grid-template-columns: repeat(10, 150px) !important;
   }
-  ._gnb__menu_1tp1k_13 {
+  #commonLayoutGnb > div > div {
     left: calc(50% - 820px) !important;
   }
 

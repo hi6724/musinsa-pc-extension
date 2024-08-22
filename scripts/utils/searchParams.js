@@ -35,6 +35,10 @@ function setBrandFilters() {
   baseUrl.searchParams.append('page', query.page ?? 1);
   baseUrl.searchParams.append('size', window.innerWidth < 1701 ? 80 : 100);
   Object.keys(query).forEach((key) => {
+    if (key === 'categoryCode') {
+      baseUrl.searchParams.append('category', query[key]);
+      return;
+    }
     baseUrl.searchParams.append(key, query[key]);
   });
 
