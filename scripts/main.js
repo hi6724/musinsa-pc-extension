@@ -2,9 +2,14 @@ const callback = [];
 
 async function handleRouteChange(oldHref) {
   const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/goods(\?.*)?$/;
+  const brandUrlPattern = /^https:\/\/www\.musinsa\.com\/brand\/.*(\?.*)?$/;
   if (oldHref && oldHref === document.location.href) return;
   if (searchDetailPattern.test(document.location.href)) {
     await initSearchDetailPage();
+    return;
+  }
+  if (brandUrlPattern.test(document.location.href)) {
+    await initBrandPage();
     return;
   }
   location.href.includes('category') && (await initCategoryPage());

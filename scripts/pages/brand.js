@@ -4,9 +4,9 @@ function parseAndJoinIDs(inputString) {
   return ids.join(',');
 }
 
-async function categorySearchHandler() {
-  const categoryUrlPattern = /^https:\/\/www\.musinsa\.com\/category\/.*(\?.*)?$/;
-  if (!categoryUrlPattern.test(window.location.href)) return;
+async function brandSearchHandler() {
+  const urlPattern = /^https:\/\/www\.musinsa\.com\/brand\/.*(\?.*)?$/;
+  if (!urlPattern.test(window.location.href)) return;
 
   const container = document.querySelector('.goods-container');
   const pagination = document.querySelector('.pagination');
@@ -14,7 +14,7 @@ async function categorySearchHandler() {
   container.innerHTML = '';
 
   const query = getQueryParams(window.location.search);
-  const baseUrl = setCategoryFilters();
+  const baseUrl = setBrandFilters();
 
   const data = await (
     await fetch(baseUrl.toString(), {
@@ -72,10 +72,10 @@ async function categorySearchHandler() {
   main.appendChild(container);
 }
 
-async function initCategoryPage() {
+async function initBrandPage() {
   if (window.innerWidth < 1200) return;
-  const categoryUrlPattern = /^https:\/\/www\.musinsa\.com\/category\/.*(\?.*)?$/;
-  if (!categoryUrlPattern.test(window.location.href)) return;
+  const urlPattern = /^https:\/\/www\.musinsa\.com\/brand\/.*(\?.*)?$/;
+  if (!urlPattern.test(window.location.href)) return;
 
   const prevGoodsContainer = document.querySelector('.goods-container');
   const prevPagination = document.querySelector('.pagination');
@@ -89,12 +89,12 @@ async function initCategoryPage() {
   pagination.className = 'pagination';
   pagination.addEventListener('click', (e) => {
     handlePageClick(e);
-    categorySearchHandler();
+    brandSearchHandler();
   });
 
   const main = document.querySelector('body>div');
   main.appendChild(container);
   main.appendChild(pagination);
 
-  categorySearchHandler();
+  brandSearchHandler();
 }

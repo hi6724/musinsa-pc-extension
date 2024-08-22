@@ -30,10 +30,10 @@
         "scripts/utils/searchParams.js",
         "scripts/utils/common.js",
         "scripts/utils/goodsItem.js",
-        "scripts/utils/categoryItem.js",
         "scripts/utils/pagination.js",
         "scripts/pages/goods.js",
         "scripts/pages/categories.js",
+        "scripts/pages/brand.js",
         "scripts/main.js"
       ]
     }

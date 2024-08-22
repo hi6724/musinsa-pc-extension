@@ -1,13 +1,11 @@
 /* https://www.musinsa.com/main/116 */
 
 @media (min-width: 1200px) {
-  /* 카테고리(hdUJFm), 검색결과(.dBXfGP) 기존 상품 컨테이너 숨기기 */
+  /* 카테고리(hdUJFm), 검색결과(.dBXfGP), 브랜드(.hUHGvv) 기존 상품 컨테이너 숨기기 */
   .hbUJFm,
-  .dBXfGP {
-    opacity: 0 !important;
-    position: fixed !important;
-    bottom: 0 !important;
-    height: 0 !important;
+  .dBXfGP,
+  .hUHGvv {
+    display: none;
   }
 
   .goods-container {
@@ -22,8 +20,16 @@
     display: none !important;
   }
 
+  /* .jyANhC ~ .bcgdHD https://www.musinsa.com/products/3466424 제품 후기 */
+  /* .cmBdKH ~ .bcgdHD https://www.musinsa.com/products/3466424 브랜드 */
   #commonLayoutContainer,
-  #commonLayoutHeader {
+  #commonLayoutHeader,
+  .jyANhC,
+  .bxvUvl,
+  .lgssxI,
+  .fLboYn,
+  .bcgdHD,
+  .cmBdKH {
     max-width: 1200px !important;
   }
   body {
@@ -143,7 +149,13 @@
 
 @media (min-width: 1701px) {
   #commonLayoutContainer,
-  #commonLayoutHeader {
+  #commonLayoutHeader,
+  .jyANhC,
+  .bxvUvl,
+  .lgssxI,
+  .fLboYn,
+  .bcgdHD,
+  .cmBdKH {
     max-width: 1500px !important;
   }
 
@@ -157,4 +169,109 @@
   .goods-container {
     grid-template-columns: repeat(10, 1fr);
   }
+}
+
+/* goodsItem css */
+.bQrEVy {
+  height: fit-content;
+  background-color: white;
+}
+.ikaYtH {
+  position: relative;
+}
+.edWhwq {
+  display: flex;
+  flex-direction: column;
+}
+.lckcfh {
+  min-height: 184px;
+  padding: 12px 8px 24px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bXGDph {
+  display: grid;
+  row-gap: 2px;
+}
+.tzoUH {
+  width: 100%;
+  overflow: hidden;
+}
+.jlrYiO {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.euUmLF {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+.dizzij {
+  display: flex;
+  flex-direction: row;
+}
+.dWwHhz {
+  margin-top: 6px;
+  height: 16px;
+}
+.fObkCV {
+  position: relative;
+  display: flex;
+}
+.iSPiuY {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  z-index: 10;
+}
+.hanfXK {
+  position: relative;
+  width: 100%;
+}
+.kVFxqp {
+  display: flex;
+  align-items: center;
+}
+.oUDiE,
+.hhGfkp,
+.bxFGHv {
+  width: 12px;
+  height: 12px;
+}
+.iqtthR {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  cursor: pointer;
+}
+.jtzgBJ {
+  white-space: normal;
+  -webkit-line-clamp: 2;
+}
+.cMkxIw {
+  white-space: normal;
+  -webkit-line-clamp: 1;
+}
+.bnDFEJ {
+  white-space: normal;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.iXeGsA {
+  font-size: 13px;
+}
+.fyDqTQ {
+  display: flex;
+  flex-direction: row;
 }

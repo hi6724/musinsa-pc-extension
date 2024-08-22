@@ -193,7 +193,7 @@ function goodsItemTemplate({
                   data-brand-id='musinsastandard'
                   data-item-list-id='goods_list'
                   data-item-list-index='3'
-                  data-item-applied-filter-group-1='성별:남성'
+                  data-item-applied-filter-group-1='성별:${`${displayGenderText}`}'
                   data-item-applied-filter-group-2='(not set)'
                   data-button-id='goods_option'
                   data-button-name='상품옵션 열기'
@@ -222,7 +222,7 @@ function goodsItemTemplate({
                     </div>
                   </div>
                 </div>
-                <span class='text-etc_11px_reg absolute top-0 right-0 text-gray-500 font-pretendard'>남성</span>
+                <span class='text-etc_11px_reg absolute top-0 right-0 text-gray-500 font-pretendard'>${`${displayGenderText}`}</span>
               </div>
             </div>
           </div>
