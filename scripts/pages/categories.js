@@ -67,9 +67,6 @@ async function categorySearchHandler() {
     currentPage: query.page ?? 1,
     lastPage: paginationData.totalPages,
   });
-
-  const main = document.querySelector('main');
-  main.appendChild(container);
 }
 
 async function initCategoryPage() {
@@ -92,7 +89,7 @@ async function initCategoryPage() {
     categorySearchHandler();
   });
 
-  const main = document.querySelector('body>div');
+  const main = document.querySelector('main');
   main.appendChild(container);
   main.appendChild(pagination);
 

@@ -66,34 +66,31 @@ async function searchDetailHandler() {
     currentPage: query.page ?? 1,
     lastPage: paginationData.totalPages,
   });
-
-  const main = document.querySelector('main');
-  main.appendChild(container);
 }
 
 async function initSearchDetailPage() {
   if (window.innerWidth < 1200) return;
   const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/goods(\?.*)?$/;
   if (!searchDetailPattern.test(window.location.href)) return;
+  const main = document.querySelector('main>div');
 
   const prevGoodsContainer = document.querySelector('.goods-container');
   const prevPagination = document.querySelector('.pagination');
-  if (prevGoodsContainer) prevGoodsContainer.remove();
-  if (prevPagination) prevPagination.remove();
 
-  const container = document.createElement('div');
-  container.className = 'goods-container';
-
-  const pagination = document.createElement('div');
-  pagination.className = 'pagination';
-  pagination.addEventListener('click', (e) => {
-    handlePageClick(e);
-    searchDetailHandler();
-  });
-
-  const main = document.querySelector('body>div');
-  main.appendChild(container);
-  main.appendChild(pagination);
+  if (!prevGoodsContainer) {
+    const container = document.createElement('div');
+    container.className = 'goods-container';
+    main.appendChild(container);
+  }
+  if (!prevPagination) {
+    const pagination = document.createElement('div');
+    pagination.className = 'pagination';
+    pagination.addEventListener('click', (e) => {
+      handlePageClick(e);
+      searchDetailHandler();
+    });
+    main.appendChild(pagination);
+  }
 
   searchDetailHandler();
 }
