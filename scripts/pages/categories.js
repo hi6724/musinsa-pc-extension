@@ -69,7 +69,7 @@ async function categorySearchHandler() {
   });
 }
 
-async function initCategoryPage() {
+async function initCategoryPageExist() {
   if (window.innerWidth < 1200) return;
   const categoryUrlPattern = /^https:\/\/www\.musinsa\.com\/category\/.*(\?.*)?$/;
   if (!categoryUrlPattern.test(window.location.href)) return;
@@ -94,4 +94,15 @@ async function initCategoryPage() {
   main.appendChild(pagination);
 
   categorySearchHandler();
+}
+
+function initCategoryPage() {
+  const interval = setInterval(() => {
+    const divs = document.querySelectorAll('main>div');
+    if (divs.length >= 3) {
+      clearInterval(interval);
+      divs[2].remove();
+      initCategoryPageExist();
+    }
+  }, 100);
 }

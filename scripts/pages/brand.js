@@ -44,6 +44,7 @@ async function brandSearchHandler() {
     goodsItemElement.className = 'goods-item';
     goodsItemElement.innerHTML = goodsItemTemplate({
       ...goodsItem,
+      ranking: i + 1 + paginationData.size * (paginationData.page - 1),
       likeCount: +likeData[i].count,
       isLiked: likeData[i].liked,
     });
@@ -67,12 +68,9 @@ async function brandSearchHandler() {
     currentPage: query.page ?? 1,
     lastPage: paginationData.totalPages,
   });
-
-  const main = document.querySelector('main');
-  main.appendChild(container);
 }
 
-async function initBrandPage() {
+async function initBrandPageExist() {
   if (window.innerWidth < 1200) return;
   const urlPattern = /^https:\/\/www\.musinsa\.com\/brand\/.*(\?.*)?$/;
   if (!urlPattern.test(window.location.href)) return;
@@ -92,9 +90,30 @@ async function initBrandPage() {
     brandSearchHandler();
   });
 
-  const main = document.querySelector('body>div');
+  const main = document.querySelector('main');
   main.appendChild(container);
   main.appendChild(pagination);
 
   brandSearchHandler();
+}
+
+function initBrandPage() {
+  const currentUrl = document.location.href;
+  const isFlagShip = currentUrl.includes('adidas') || currentUrl.includes('nike');
+  const interval = setInterval(() => {
+    if (isFlagShip) {
+      const divs = document.querySelectorAll('main>div');
+      if (currentUrl.split('/').length < 6) return;
+      if (divs.length >= 3) {
+        clearInterval(interval);
+        initBrandPageExist();
+      }
+    } else {
+      const main = document.querySelector('main');
+      if (main) {
+        clearInterval(interval);
+        initBrandPageExist();
+      }
+    }
+  }, 100);
 }

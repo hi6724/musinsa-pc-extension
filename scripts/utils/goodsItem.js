@@ -22,6 +22,7 @@ function goodsItemTemplate({
   snap,
   likeCount,
   isLiked,
+  ranking,
 }) {
   const goodsLabelHTML = infoLabelList
     .map((data) => {
@@ -98,6 +99,13 @@ function goodsItemTemplate({
                 <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class=""><path d="M9.80392 16.3294C9.91639 16.4275 10.0836 16.4275 10.1961 16.3294C11.0801 15.5587 14.7183 12.3692 16.25 10.75C16.9 10 17.5 9 17.5 7.5C17.5 5.25 16 3.5 13.75 3.5C11.85 3.5 10.8 4.65 10 6C9.2 4.65 8.15 3.5 6.25 3.5C4 3.5 2.5 5.25 2.5 7.5C2.5 9 3.1 10 3.75 10.75C5.28165 12.3692 8.91988 15.5587 9.80392 16.3294Z" stroke-miterlimit="10" fill-opacity="0.3" fill="" stroke="" class="stroke-white fill-gray-500" vector-effect="non-scaling-stroke"></path></svg>
               </div>
             </button>
+
+            ${
+              ranking
+                ? `<span class="inline text-etc_11px_reg py-[1px] px-1 rounded-sm h-4 text-white bg-white sc-1m4cyao-3 fYDLXM"><span class="text-etc_11px_semibold text-black font-pretendard">${ranking}</span></span>`
+                : ''
+            }
+
           </div>
         </div>
         <div class='sc-eAKtBH edWhwq'>

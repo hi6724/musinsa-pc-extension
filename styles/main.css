@@ -1,10 +1,11 @@
 /* https://www.musinsa.com/main/116 */
 
 @media (min-width: 1200px) {
-  /* 카테고리(hdUJFm), 검색결과(.dBXfGP), 브랜드(.hUHGvv) 기존 상품 컨테이너 숨기기 */
+  /* 카테고리(hdUJFm), 검색결과(.dBXfGP), 브랜드(.hUHGvv) 나이키,아디다스(.hqZJRA) 기존 상품 컨테이너 숨기기 */
   .hbUJFm,
   .dBXfGP,
-  .hUHGvv {
+  .hUHGvv,
+  .hqZJRA {
     display: none;
   }
   .fdeRLl {
@@ -24,7 +25,7 @@
   }
 
   /* .jyANhC ~ .hKUlNI https://www.musinsa.com/products/3466424 제품 후기 */
-  /* .cmBdKH ~ .bcgdHD https://www.musinsa.com/products/3466424 브랜드 */
+  /* .cmBdKH ~  https://www.musinsa.com/products/3466424 브랜드 */
   #commonLayoutContainer,
   #commonLayoutHeader,
   .jyANhC,
@@ -35,6 +36,10 @@
   .cMopAt,
   .hKUlNI,
   .cmBdKH,
+  .gHJEDg,
+  .iLGXtZ,
+  .fJBsTX > section,
+  .NoTSp,
   ._dim_182gh_37 {
     max-width: 1200px !important;
   }
@@ -183,6 +188,10 @@
   .cMopAt,
   .hKUlNI,
   .cmBdKH,
+  .gHJEDg,
+  .iLGXtZ,
+  .fJBsTX > section,
+  .NoTSp,
   ._dim_182gh_37 {
     max-width: 1500px !important;
   }
@@ -323,4 +332,15 @@
 }
 .hhGZPH {
   color: white;
+}
+.fYDLXM {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  min-width: 16px;
+  min-height: 16px;
+  z-index: 10;
 }

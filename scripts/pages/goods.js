@@ -68,11 +68,15 @@ async function searchDetailHandler() {
   });
 }
 
-async function initSearchDetailPage() {
+async function initSearchDetailPageExist() {
   if (window.innerWidth < 1200) return;
   const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/goods(\?.*)?$/;
   if (!searchDetailPattern.test(window.location.href)) return;
+
   const main = document.querySelector('main>div');
+  const headers = document.querySelectorAll('main>div>header');
+  if (!main) return;
+  if (headers.length < 2) return;
 
   const prevGoodsContainer = document.querySelector('.goods-container');
   const prevPagination = document.querySelector('.pagination');
@@ -93,4 +97,15 @@ async function initSearchDetailPage() {
   }
 
   searchDetailHandler();
+}
+
+function initSearchDetailPage() {
+  const interval = setInterval(() => {
+    const divs = document.querySelectorAll('main>div>div');
+    if (divs.length >= 5) {
+      divs[4].remove();
+      clearInterval(interval);
+      initSearchDetailPageExist();
+    }
+  }, 100);
 }

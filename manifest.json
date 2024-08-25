@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "무신사PC",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "icons": {
     "16": "images/16.png",
     "32": "images/32.png",
