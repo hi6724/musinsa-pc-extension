@@ -44,6 +44,7 @@ async function categorySearchHandler() {
     goodsItemElement.className = 'goods-item';
     goodsItemElement.innerHTML = goodsItemTemplate({
       ...goodsItem,
+      ranking: i + 1 + paginationData.size * (paginationData.page - 1),
       likeCount: +likeData[i].count,
       isLiked: likeData[i].liked,
     });

@@ -44,6 +44,7 @@ async function searchDetailHandler() {
     goodsItemElement.innerHTML = goodsItemTemplate({
       ...goodsItem,
       likeCount: +likeData[i].count,
+      ranking: i + 1 + paginationData.size * (paginationData.page - 1),
       isLiked: likeData[i].liked,
     });
     const likeBtn = goodsItemElement.querySelector('button');
@@ -104,7 +105,7 @@ function initSearchDetailPage() {
     const div = document.querySelector('.dBXfGP');
     const isOk = goodsContainerExists();
     if (div || isOk) {
-      if (div) div.style.display = 'none';  
+      if (div) div.style.display = 'none';
       clearInterval(interval);
       initSearchDetailPageExist();
     }

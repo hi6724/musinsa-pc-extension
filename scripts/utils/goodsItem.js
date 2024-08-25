@@ -102,7 +102,9 @@ function goodsItemTemplate({
 
             ${
               ranking
-                ? `<span class="inline text-etc_11px_reg py-[1px] px-1 rounded-sm h-4 text-white bg-white sc-1m4cyao-3 fYDLXM"><span class="text-etc_11px_semibold text-black font-pretendard">${ranking}</span></span>`
+                ? `<span class="inline text-etc_11px_reg py-[1px] px-1 rounded-sm h-4 text-white bg-white sc-1m4cyao-3 fYDLXM"><span class="text-etc_11px_semibold text-black font-pretendard">${formatNumber(
+                    ranking
+                  )}</span></span>`
                 : ''
             }
 
