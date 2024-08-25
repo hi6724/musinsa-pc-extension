@@ -1,6 +1,16 @@
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+function goodsContainerExists() {
+  const goodsContainer = document.querySelector('.goods-container');
+  if (goodsContainer) {
+    const pagination = document.querySelector('.pagination');
+    goodsContainer.remove();
+    if (pagination) pagination.remove();
+    return true;
+  }
+  return false;
+}
 
 function formatNumber(number) {
   if (number < 1000) return number.toString();

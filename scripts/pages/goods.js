@@ -101,9 +101,10 @@ async function initSearchDetailPageExist() {
 
 function initSearchDetailPage() {
   const interval = setInterval(() => {
-    const divs = document.querySelectorAll('main>div>div');
-    if (divs.length >= 5) {
-      divs[4].remove();
+    const div = document.querySelector('.dBXfGP');
+    const isOk = goodsContainerExists();
+    if (div || isOk) {
+      if (div) div.style.display = 'none';  
       clearInterval(interval);
       initSearchDetailPageExist();
     }

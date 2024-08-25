@@ -75,11 +75,6 @@ async function initBrandPageExist() {
   const urlPattern = /^https:\/\/www\.musinsa\.com\/brand\/.*(\?.*)?$/;
   if (!urlPattern.test(window.location.href)) return;
 
-  const prevGoodsContainer = document.querySelector('.goods-container');
-  const prevPagination = document.querySelector('.pagination');
-  if (prevGoodsContainer) prevGoodsContainer.remove();
-  if (prevPagination) prevPagination.remove();
-
   const container = document.createElement('div');
   container.className = 'goods-container';
 
@@ -101,16 +96,22 @@ function initBrandPage() {
   const currentUrl = document.location.href;
   const isFlagShip = currentUrl.includes('adidas') || currentUrl.includes('nike');
   const interval = setInterval(() => {
+    const isOk = goodsContainerExists();
     if (isFlagShip) {
       const divs = document.querySelectorAll('main>div');
-      if (currentUrl.split('/').length < 6) return;
-      if (divs.length >= 3) {
+      if (currentUrl.split('/').length < 6) {
+        clearInterval(interval);
+        return;
+      }
+      if (divs.length >= 3 || isOk) {
         clearInterval(interval);
         initBrandPageExist();
+        return;
       }
     } else {
-      const main = document.querySelector('main');
-      if (main) {
+      const div = document.querySelector('.hUHGvv');
+      if (div || isOk) {
+        if (div) div.style.display = 'none';
         clearInterval(interval);
         initBrandPageExist();
       }

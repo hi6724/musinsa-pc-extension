@@ -27,12 +27,16 @@ function setCategoryFilters() {
 }
 
 function setBrandFilters() {
+  const currentUrl = window.location.href;
+  if (currentUrl.includes('best')) return setBestBrandFilters();
+  else return setBrandFilters2();
+}
+
+function setBrandFilters2() {
   const query = getQueryParams(window.location.search);
   const splitUrl = window.location.href.split('/');
   const brandIndex = window.location.href.split('/')?.findIndex((item) => item === 'brand');
   const brand = splitUrl[brandIndex + 1].split('?')[0];
-  const currentUrl = window.location.href;
-
   let baseUrl = new URL(`https://api.musinsa.com/api2/dp/v1/plp/goods`);
 
   baseUrl.searchParams.append('brand', brand);
@@ -57,14 +61,15 @@ function setBestBrandFilters() {
   const brand = splitUrl[brandIndex + 1].split('?')[0];
 
   let baseUrl = new URL(`https://api.musinsa.com/api2/dp/v1/brand/flagship/${brand}/goods/best`);
-
-  baseUrl.searchParams.append('brand', brand);
-  baseUrl.searchParams.append('caller', 'BRAND');
   baseUrl.searchParams.append('page', query.page ?? 1);
   baseUrl.searchParams.append('size', window.innerWidth < 1701 ? 80 : 100);
   Object.keys(query).forEach((key) => {
     if (key === 'categoryCode') {
       baseUrl.searchParams.append('category', query[key]);
+      return;
+    }
+    if (key === 'sortCode') {
+      baseUrl.searchParams.append('period', query[key]);
       return;
     }
     baseUrl.searchParams.append(key, query[key]);

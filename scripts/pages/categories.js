@@ -98,10 +98,11 @@ async function initCategoryPageExist() {
 
 function initCategoryPage() {
   const interval = setInterval(() => {
-    const divs = document.querySelectorAll('main>div');
-    if (divs.length >= 3) {
+    const div = document.querySelector('.itEfxW');
+    const isOk = goodsContainerExists();
+    if (div || isOk) {
+      if (div) div.style.display = 'none';
       clearInterval(interval);
-      divs[2].remove();
       initCategoryPageExist();
     }
   }, 100);
