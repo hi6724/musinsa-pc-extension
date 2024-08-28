@@ -25,6 +25,7 @@ async function likeSearchHandler(filter, cursor) {
   const newFilter = await convertToCode(filter);
   const container = document.querySelector('.goods-container');
   container.innerHTML = '';
+
   const baseUrl = setLikeFilters(newFilter, { cursor, lastIndex: size * prevCursorList.length });
   const data = await (
     await fetch(baseUrl.toString(), {
@@ -110,16 +111,18 @@ async function likeObserverCallback() {
 function initLikesPage() {
   const interval = setInterval(() => {
     const virtualItemList = getVirtualItemList();
-    if (!virtualItemList) return;
-    virtualItemList.style.display = 'none';
-    clearInterval(interval);
     const main = document.querySelector('main');
     const container = document.createElement('div');
     const pagination = document.createElement('div');
+    if (!virtualItemList || !main) return;
+    prevFilter = null;
+    prevCursorList = [];
+    virtualItemList.remove();
     container.className = 'goods-container';
     pagination.className = 'pagination';
     main.appendChild(container);
     main.appendChild(pagination);
     likeObserver();
+    clearInterval(interval);
   }, 100);
 }

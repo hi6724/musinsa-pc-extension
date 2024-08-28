@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "무신사PC",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "icons": {
     "16": "images/16.png",
     "32": "images/32.png",
@@ -34,6 +34,7 @@
         "scripts/pages/goods.js",
         "scripts/pages/categories.js",
         "scripts/pages/brand.js",
+        "scripts/pages/likes.js",
         "scripts/main.js"
       ]
     }

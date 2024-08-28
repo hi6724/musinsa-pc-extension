@@ -1,11 +1,17 @@
 const callback = [];
 
-async function handleRouteChange() {
+async function handleRouteChange(oldHref) {
   const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/goods(\?.*)?$/;
   const likePattern = /^https:\/\/www\.musinsa\.com\/like\/goods(\?.*)?$/;
   const brandUrlPattern = /^https:\/\/www\.musinsa\.com\/brand\/.*(\?.*)?$/;
   const currentUrl = document.location.href;
-  console.log('ROUTE CHANGE', currentUrl);
+
+  const currentQueryParams = getQueryParams('?' + currentUrl.split('?')[1]);
+  const oldQueryParams = getQueryParams('?' + oldHref?.split('?')[1]);
+  const isSameFilter = compareWithoutPage(currentQueryParams, oldQueryParams);
+  if (!isSameFilter) clearPageParams();
+  clearCustomComponents();
+
   if (searchDetailPattern.test(currentUrl)) {
     await initSearchDetailPage();
     return;
@@ -27,7 +33,7 @@ async function init() {
 
   const observer = new MutationObserver(async () => {
     if (oldHref === document.location.href) return;
-    handleRouteChange();
+    handleRouteChange(oldHref);
     oldHref = document.location.href;
   });
 

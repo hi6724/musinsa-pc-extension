@@ -28,3 +28,9 @@ function updateURLWithParams(queryParams) {
   // history.pushState를 사용하여 URL을 변경 (페이지 리로드 없음)
   history.pushState(null, '', newURL);
 }
+
+function clearPageParams() {
+  const url = new URL(location.href);
+  url.searchParams.delete('page');
+  history.replaceState(null, '', url.toString());
+}
