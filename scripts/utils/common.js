@@ -17,3 +17,7 @@ function formatNumber(number) {
   if (number < 10000) return (number / 1000).toFixed(1) + '천+';
   return (number / 10000).toFixed(1) + '만+';
 }
+
+function getVirtualItemList() {
+  return document.querySelector('div[data-testid="virtuoso-item-list"]');
+}

@@ -6,8 +6,9 @@
   .dBXfGP,
   .hUHGvv,
   .hqZJRA,
-  .itEfxW {
-    display: none;
+  .itEfxW,
+  .jGZauf {
+    display: none !important;
   }
   .fdeRLl {
     flex: none !important;
@@ -19,14 +20,30 @@
     position: relative;
     padding-bottom: 50px !important;
   }
+  .loader {
+    height: 10px;
+  }
   /*  */
   #commonLayoutContainer::before,
   #commonLayoutContainer::after {
     display: none !important;
   }
+  /* 좋아요 */
+  .jGZauf {
+    max-width: 600px;
+  }
+  /* .gxbYJn {
+    height: 130px;
+    overflow: hidden;
+    grid-template-columns: repeat(36, 1fr) !important;
+  }
+  #fakeContainer > div > .gxbYJn {
+    height: 390px;
+  } */
 
   /* .jyANhC ~ .hKUlNI https://www.musinsa.com/products/3466424 제품 후기 */
   /* .cmBdKH ~  https://www.musinsa.com/products/3466424 브랜드 */
+  /* .leEKmD ~  https://www.musinsa.com/products/3466424 내 좋아요 */
   #commonLayoutContainer,
   #commonLayoutHeader,
   .jyANhC,
@@ -41,8 +58,12 @@
   .iLGXtZ,
   .fJBsTX > section,
   .NoTSp,
+  .leEKmD,
   ._dim_182gh_37 {
     max-width: 1200px !important;
+  }
+  .leEKmD {
+    width: 1200px !important;
   }
   body,
   .w-layout {
@@ -193,8 +214,12 @@
   .iLGXtZ,
   .fJBsTX > section,
   .NoTSp,
+  .leEKmD,
   ._dim_182gh_37 {
     max-width: 1500px !important;
+  }
+  .leEKmD {
+    width: 1500px !important;
   }
 
   .cta-DVS {

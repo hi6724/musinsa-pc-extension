@@ -9,6 +9,7 @@ function handlePageClick(event) {
   q.page = newPage;
   updateURLWithParams(q);
 }
+
 function paginationTemplate({ currentPage, lastPage }) {
   // Ensure currentPage is within valid range
   currentPage = Math.max(1, Math.min(currentPage, lastPage));
@@ -39,5 +40,20 @@ function paginationTemplate({ currentPage, lastPage }) {
             ${pages}
             <button data-page=next data-last=${lastPage} class="page next"
             ${currentPage == lastPage && 'disabled'}>next</button>
+    `;
+}
+
+function handleClickWithoutPage(cursor) {
+  const q = getQueryParams(window.location.search);
+  if (cursor) q.cursor = cursor;
+  updateURLWithParams(q);
+}
+
+function noPagepaginationTemplate({ hasNext, hasPrev }) {
+  return `
+            <button data-page=prev class="page prev" ${!hasPrev && 'disabled'}>prev</button>
+
+            <button data-page=next class="page next"
+            ${!hasNext && 'disabled'}>next</button>
     `;
 }

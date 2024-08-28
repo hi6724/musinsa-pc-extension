@@ -77,3 +77,16 @@ function setBestBrandFilters() {
 
   return baseUrl;
 }
+
+function setLikeFilters(filter, { cursor, lastIndex }) {
+  const baseUrl = new URL('https://like.musinsa.com/api2/like/like-page/v1/tab/goods');
+  baseUrl.searchParams.append('size', window.innerWidth < 1701 ? 80 : 100);
+  baseUrl.searchParams.set('isSale', filter?.isSale ?? false);
+  baseUrl.searchParams.set('isNotSoldOut', filter?.isNotSoldOut ?? false);
+  filter.sort && baseUrl.searchParams.set('sort', filter.sort);
+  filter.categoryCode && baseUrl.searchParams.set('categoryCode', filter.categoryCode);
+  cursor && baseUrl.searchParams.set('cursor', cursor);
+  lastIndex && baseUrl.searchParams.set('lastIndex', lastIndex);
+
+  return baseUrl;
+}

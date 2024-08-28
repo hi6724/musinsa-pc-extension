@@ -13,19 +13,19 @@ function goodsItemTemplate({
   brandLinkUrl,
   reviewCount,
   reviewScore,
-  isOptionVisible,
-  isAd,
   infoLabelList,
   imageLabelList,
-  clickTrackers,
-  impressionTrackers,
-  snap,
   likeCount,
   isLiked,
   ranking,
+  isOptionVisible,
+  isAd,
+  clickTrackers,
+  impressionTrackers,
+  snap,
 }) {
   const goodsLabelHTML = infoLabelList
-    .map((data) => {
+    ?.map((data) => {
       const { code, title, color } = data;
       return `<span
                 class='inline text-etc_11px_reg py-[1px] px-1 rounded-sm h-4 text-white bg-gray-500 bg-opacity-10 sc-bBkKde jbyWrG'
@@ -36,7 +36,7 @@ function goodsItemTemplate({
     })
     .join('');
   const imageLabelHTML = imageLabelList
-    .map((data) => {
+    ?.map((data) => {
       const { code, title, color } = data;
       return `<div class="sc-guDLey sc-ifyrAs jlrYiO jlRRYg"><span class="inline text-etc_11px_reg py-[1px] px-1 rounded-sm h-4 text-white bg-transparent sc-gYrqIg cMBWCJ" title=${`${code}`}><span class="text-etc_11px_reg sc-cCzLxZ hhGZPH font-pretendard">${`${title}`}</span></span></div>`;
     })
