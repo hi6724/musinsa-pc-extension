@@ -36,10 +36,9 @@ function paginationTemplate({ currentPage, lastPage }) {
   }
 
   return `
-            <button data-page=prev class="page prev" ${currentPage == 1 && 'disabled'}>prev</button>
+            <button  class="page prev" ${currentPage == 1 && 'disabled'}>prev</button>
             ${pages}
-            <button data-page=next data-last=${lastPage} class="page next"
-            ${currentPage == lastPage && 'disabled'}>next</button>
+            <button   class="page next" ${currentPage == lastPage && 'disabled'}>next</button>
     `;
 }
 

@@ -34,3 +34,33 @@ function compareWithoutPage(obj1, obj2) {
   // JSON 문자열 비교를 통한 객체 비교
   return JSON.stringify(filteredObj1) === JSON.stringify(filteredObj2);
 }
+
+async function fetchUntilEnd(url, options = {}) {
+  let nextCursor = null;
+  let results = [];
+
+  do {
+    // URL에 nextCursor가 있으면 추가
+    const fetchUrl = nextCursor ? `${url}?cursor=${nextCursor}` : url;
+
+    try {
+      const response = await fetch(fetchUrl, options);
+      if (!response.ok) {
+        throw new Error(`Error fetching data: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      // 응답 결과를 results 배열에 추가
+      results = results.concat(data.items || []);
+
+      // nextCursor 업데이트
+      nextCursor = data.nextCursor;
+    } catch (error) {
+      console.error('Fetch error:', error);
+      break; // 오류 발생 시 루프를 중단합니다.
+    }
+  } while (nextCursor);
+
+  return results;
+}

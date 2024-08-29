@@ -1,5 +1,7 @@
 let prevFilter = null;
 let prevCursorList = [];
+let totalResults = [];
+let currentPage = 1;
 
 async function convertToCode(filter) {
   const { data } = await (
@@ -20,19 +22,37 @@ async function convertToCode(filter) {
   return { ...filter, categoryCode, sort };
 }
 
-async function likeSearchHandler(filter, cursor) {
-  const size = window.innerWidth < 1701 ? 80 : 100;
+async function getTotalCount(filter) {
   const newFilter = await convertToCode(filter);
+  const size = window.innerWidth < 1701 ? 80 : 100;
+  let nextCursor = null;
+  let results = [];
+
+  do {
+    // URL에 nextCursor가 있으면 추가
+    const fetchUrl = setLikeFilters(newFilter, { cursor: nextCursor, lastIndex: size * results.length });
+
+    try {
+      const response = await fetch(fetchUrl, { credentials: 'include' });
+      if (!response.ok) throw new Error(`Error fetching data: ${response.statusText}`);
+      const data = await response.json();
+      results.push(data.data);
+      nextCursor = data?.link?.nextCursor;
+    } catch (error) {
+      console.error('Fetch error:', error);
+      break; // 오류 발생 시 루프를 중단합니다.
+    }
+  } while (nextCursor);
+
+  return results;
+}
+
+async function likeSearchHandler() {
+  const size = window.innerWidth < 1701 ? 80 : 100;
   const container = document.querySelector('.goods-container');
   container.innerHTML = '';
 
-  const baseUrl = setLikeFilters(newFilter, { cursor, lastIndex: size * prevCursorList.length });
-  const data = await (
-    await fetch(baseUrl.toString(), {
-      credentials: 'include',
-    })
-  ).json();
-  const goods = data.data;
+  const goods = totalResults[currentPage - 1];
 
   goods.forEach((goodsItem, i) => {
     if (goodsItem.itemType !== 'GOODS') return;
@@ -58,24 +78,6 @@ async function likeSearchHandler(filter, cursor) {
     });
     container.appendChild(goodsItemElement);
   });
-
-  const pagination = document.querySelector('.pagination');
-  const nextCursor = data?.link?.nextCursor;
-  pagination.innerHTML = '';
-  pagination.innerHTML = noPagepaginationTemplate({
-    hasNext: !!nextCursor,
-    hasPrev: prevCursorList.length > 0,
-  });
-  const prevBtn = pagination.querySelector('.prev');
-  const nextBtn = pagination.querySelector('.next');
-  nextBtn.addEventListener('click', () => {
-    prevCursorList.push(cursor);
-    likeSearchHandler(filter, nextCursor);
-  });
-  prevBtn.addEventListener('click', () => {
-    const prevCursor = prevCursorList.pop();
-    likeSearchHandler(filter, prevCursor);
-  });
 }
 
 function likeObserver() {
@@ -96,6 +98,7 @@ async function likeObserverCallback() {
   const isSale = childrenList[2].firstChild.childNodes[0].querySelector('button').dataset.state === 'checked';
   const isNotSoldOut = childrenList[2].firstChild.childNodes[1].querySelector('button').dataset.state === 'checked';
   const sortText = childrenList[2].childNodes[1].querySelector('span').innerText;
+
   if (
     prevFilter?.currentCategory === currentCategory &&
     prevFilter?.isSale === isSale &&
@@ -105,7 +108,35 @@ async function likeObserverCallback() {
     return;
   prevFilter = { currentCategory, isSale, isNotSoldOut, sortText };
   prevCursorList = [];
-  likeSearchHandler(prevFilter);
+  currentPage = 1;
+  totalResults = await getTotalCount(prevFilter);
+
+  const pagination = document.querySelector('.pagination');
+  pagination.innerHTML = '';
+  pagination.innerHTML = paginationTemplate({
+    currentPage,
+    lastPage: totalResults.length,
+  });
+
+  pagination.addEventListener('click', (e) => {
+    const page = e.target.dataset.page;
+    let newPage = parseInt(currentPage ?? 1, 10);
+    if (!page) return;
+    else if (page === 'prev') newPage = Math.max(1, newPage - 1);
+    else if (page === 'next') newPage = Math.min(newPage + 1, totalResults.length);
+    else newPage = page;
+    currentPage = newPage;
+
+    const pagination = document.querySelector('.pagination');
+    pagination.innerHTML = '';
+    pagination.innerHTML = paginationTemplate({
+      currentPage,
+      lastPage: totalResults.length,
+    });
+    likeSearchHandler();
+  });
+
+  likeSearchHandler();
 }
 
 function initLikesPage() {
