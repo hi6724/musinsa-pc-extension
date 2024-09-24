@@ -4,6 +4,7 @@ async function handleRouteChange(oldHref) {
   const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/goods(\?.*)?$/;
   const likePattern = /^https:\/\/www\.musinsa\.com\/like\/goods(\?.*)?$/;
   const brandUrlPattern = /^https:\/\/www\.musinsa\.com\/brand\/.*(\?.*)?$/;
+  const goodsDetailPattern = /^https:\/\/www\.musinsa\.com\/products\/.*(\?.*)?$/;
   const currentUrl = document.location.href;
 
   const currentQueryParams = getQueryParams('?' + currentUrl.split('?')[1]);
@@ -27,6 +28,10 @@ async function handleRouteChange(oldHref) {
   }
   if (likePattern.test(currentUrl)) {
     await initLikesPage();
+    return;
+  }
+  if (goodsDetailPattern.test(currentUrl)) {
+    await initGoodsDetailPage();
     return;
   }
   location.href.includes('category') && (await initCategoryPage());

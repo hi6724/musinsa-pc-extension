@@ -111,6 +111,11 @@
     font-size: 12px;
     padding: 4px 6px;
   }
+
+  /* 카테고리 필터 */
+  .hzwZBa {
+    grid-template-columns: repeat(6, minmax(0px, 1fr)) !important;
+  }
 }
 
 @media (min-width: 1701px) {

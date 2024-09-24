@@ -1,0 +1,43 @@
+.toggle_switch {
+  display: inline-block;
+  position: relative;
+  width: 48px;
+  height: 28px;
+}
+.toggle_switch input[type='checkbox'] {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  font-size: initial;
+  clip: rect(0 0 0 0);
+}
+.toggle_switch .slider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.toggle_switch input[type='checkbox']:checked + .slider {
+  background-color: #007bff;
+}
+.toggle_switch .slider::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+.toggle_switch input[type='checkbox']:checked + .slider::before {
+  transform: translateX(20px);
+}

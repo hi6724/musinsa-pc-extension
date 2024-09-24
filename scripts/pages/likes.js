@@ -142,6 +142,7 @@ async function likeObserverCallback() {
 function initLikesPage() {
   const interval = setInterval(() => {
     const virtualItemList = getVirtualItemList();
+    const virtualScroller = document.querySelector('.bqhfYF');
     const main = document.querySelector('main');
     const container = document.createElement('div');
     const pagination = document.createElement('div');
@@ -149,6 +150,7 @@ function initLikesPage() {
     prevFilter = null;
     prevCursorList = [];
     virtualItemList.remove();
+    virtualScroller?.remove();
     container.className = 'goods-container';
     pagination.className = 'pagination';
     main.appendChild(container);
