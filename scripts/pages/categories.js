@@ -50,6 +50,12 @@ async function categorySearchHandler() {
     });
     const likeBtn = goodsItemElement.querySelector('button');
     likeBtn.addEventListener('click', () => {
+      if (!LOGGED_IN) {
+        if (confirm('로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?')) {
+          location.href = 'https://www.musinsa.com/auth/login?referer=https%3A%2F%2Fwww.musinsa.com%2Fmypage';
+        }
+        return;
+      }
       const isLiked = likeBtn.classList.contains('liked');
       likeBtn.classList.toggle('liked');
       const goodsNo = goodsItem.goodsNo;

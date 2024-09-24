@@ -12,6 +12,11 @@ async function handleRouteChange(oldHref) {
   if (!isSameFilter) clearPageParams();
   clearCustomComponents();
 
+  // 로그인 관리
+  fetch('https://my.musinsa.com/api/member/v1/login-status', { credentials: 'include' })
+    .then((res) => res.json())
+    .then((data) => (LOGGED_IN = data?.data?.loggedIn));
+
   if (searchDetailPattern.test(currentUrl)) {
     await initSearchDetailPage();
     return;
