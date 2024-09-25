@@ -232,6 +232,11 @@
     flex: 0 0 12.5% !important;
     width: 12.5% !important;
   }
+
+  /* 필터 */
+  .ilqtxK {
+    width: 600px !important;
+  }
 }
 
 @media (min-width: 1701px) {
