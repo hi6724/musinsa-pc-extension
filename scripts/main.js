@@ -1,6 +1,7 @@
 const callback = [];
 
 async function handleRouteChange(oldHref) {
+  removeInsertedCSS();
   const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/goods(\?.*)?$/;
   const likePattern = /^https:\/\/www\.musinsa\.com\/like\/goods(\?.*)?$/;
   const brandUrlPattern = /^https:\/\/www\.musinsa\.com\/brand\/.*(\?.*)?$/;
@@ -19,6 +20,7 @@ async function handleRouteChange(oldHref) {
     .then((data) => (LOGGED_IN = data?.data?.loggedIn));
 
   if (searchDetailPattern.test(currentUrl)) {
+    insertCSS({ '.dBXfGP': 'display: none' });
     await initSearchDetailPage();
     return;
   }
@@ -40,6 +42,9 @@ async function handleRouteChange(oldHref) {
 async function init() {
   let oldHref = document.location.href;
   const body = document.querySelector('body');
+  const css = document.createElement('style');
+  css.id = 'musinsa-extension-style';
+  document.head.appendChild(css);
 
   const observer = new MutationObserver(async () => {
     if (oldHref === document.location.href) return;

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "무신사PC",
-  "version": "2.1.02",
+  "version": "2.1.12",
   "icons": {
     "16": "images/16.png",
     "32": "images/32.png",
@@ -19,6 +19,7 @@
       "css": [
         "styles/main.css",
         "styles/toggle.css",
+        "styles/snapView.css",
         "styles/goods.css",
         "styles/brands.css",
         "styles/goodsDetail.css",
@@ -31,6 +32,7 @@
         "scripts/utils/url.js",
         "scripts/utils/searchParams.js",
         "scripts/utils/common.js",
+        "scripts/utils/snapTemplate.js",
         "scripts/utils/goodsItem.js",
         "scripts/utils/pagination.js",
         "scripts/pages/goods.js",

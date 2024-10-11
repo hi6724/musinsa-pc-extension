@@ -1,0 +1,12 @@
+@media (min-width: 1200px) {
+  .snap-view-item {
+    max-width: 400px !important;
+  }
+  .snap-view-item img {
+    max-width: 400px !important;
+  }
+
+  .snap-view-container {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}

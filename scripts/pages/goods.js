@@ -111,7 +111,6 @@ function initSearchDetailPage() {
     const div = document.querySelector('.dBXfGP');
     const isOk = goodsContainerExists();
     if (div || isOk) {
-      if (div) div.style.display = 'none';
       clearInterval(interval);
       initSearchDetailPageExist();
     }
