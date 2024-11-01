@@ -108,7 +108,7 @@ async function initSearchDetailPageExist() {
 
 function initSearchDetailPage() {
   const interval = setInterval(() => {
-    const div = document.querySelector('.dBXfGP');
+    const div = document.querySelector('.eqgBtw');
     const isOk = goodsContainerExists();
     if (div || isOk) {
       clearInterval(interval);

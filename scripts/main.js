@@ -20,7 +20,7 @@ async function handleRouteChange(oldHref) {
     .then((data) => (LOGGED_IN = data?.data?.loggedIn));
 
   if (searchDetailPattern.test(currentUrl)) {
-    insertCSS({ '.dBXfGP': 'display: none' });
+    insertCSS({ '.eqgBtw': 'display: none' });
     await initSearchDetailPage();
     return;
   }
