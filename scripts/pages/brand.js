@@ -115,7 +115,7 @@ function initBrandPage() {
         return;
       }
     } else {
-      const div = document.querySelector('.hUHGvv');
+      const div = document.querySelector('.dqBVvr');
       if (div || isOk) {
         if (div) div.style.display = 'none';
         clearInterval(interval);

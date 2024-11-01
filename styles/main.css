@@ -3,7 +3,7 @@
 @media (min-width: 1200px) {
   /* 카테고리(hdUJFm), 검색결과(.dBXfGP), 브랜드(.hUHGvv) 나이키,아디다스(.hqZJRA) 기존 상품 컨테이너 숨기기 */
   .hbUJFm,
-  .hUHGvv,
+  .dqBVvr,
   .hqZJRA,
   .itEfxW,
   .eqgBtw,
@@ -24,6 +24,9 @@
     height: 10px;
   }
   /*  */
+  #commonLayoutFab {
+    right: -800px !important;
+  }
   #commonLayoutContainer::before,
   #commonLayoutContainer::after {
     display: none !important;
@@ -255,6 +258,9 @@
     width: 1500px !important;
   }
 
+  #commonLayoutFab {
+    right: -1050px !important;
+  }
   .cta-DVS {
     grid-template-columns: repeat(10, 150px) !important;
   }
