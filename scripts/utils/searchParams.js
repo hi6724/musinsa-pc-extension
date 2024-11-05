@@ -1,3 +1,25 @@
+function setSnapSearchFilters() {
+  const baseUrl = new URL('https://content.musinsa.com/api2/content/snap/v1/snaps');
+  const query = getQueryParams(window.location.search);
+  baseUrl.searchParams.append('fields', 'id,contentType,profileId,thumbnailUrl,model,labels,createdAt,updatedAt');
+  baseUrl.searchParams.append('page', query.page ?? 1);
+  baseUrl.searchParams.append('size', window.innerWidth < 1701 ? 80 : 100);
+  Object.keys(query).forEach((key) => {
+    baseUrl.searchParams.append(key, query[key]);
+  });
+
+  return baseUrl;
+}
+
+function setSnapCountUrl() {
+  const baseUrl = new URL('https://content.musinsa.com/api2/content/snap/v1/snaps/count');
+  const query = getQueryParams(window.location.search);
+  Object.keys(query).forEach((key) => {
+    baseUrl.searchParams.append(key, query[key]);
+  });
+  return baseUrl;
+}
+
 function setSearchFilters() {
   const baseUrl = new URL('https://api.musinsa.com/api2/dp/v1/plp/goods');
   const query = getQueryParams(window.location.search);

@@ -2,7 +2,9 @@ const callback = [];
 
 async function handleRouteChange(oldHref) {
   removeInsertedCSS();
-  const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/goods(\?.*)?$/;
+  const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/(snap|goods)(\?.*)?$/;
+  // TODO: 아래 url처리하기
+  const todoPattern = /^https:\/\/www\.musinsa\.com\/search\/(benefit|contents|lookbook)(\?.*)?$/;
   const likePattern = /^https:\/\/www\.musinsa\.com\/like\/goods(\?.*)?$/;
   const brandUrlPattern = /^https:\/\/www\.musinsa\.com\/brand\/.*(\?.*)?$/;
   const goodsDetailPattern = /^https:\/\/www\.musinsa\.com\/products\/.*(\?.*)?$/;
@@ -20,10 +22,15 @@ async function handleRouteChange(oldHref) {
     .then((data) => (LOGGED_IN = data?.data?.loggedIn));
 
   if (searchDetailPattern.test(currentUrl)) {
-    insertCSS({ '.eqgBtw': 'display: none' });
     await initSearchDetailPage();
     return;
   }
+
+  if (todoPattern.test(currentUrl)) {
+    insertCSS({ '.eqgBtw': 'display: block' });
+    return;
+  }
+
   if (brandUrlPattern.test(currentUrl)) {
     await initBrandPage();
     return;

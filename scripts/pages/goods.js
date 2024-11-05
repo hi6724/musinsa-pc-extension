@@ -4,12 +4,102 @@ function parseAndJoinIDs(inputString) {
   return ids.join(',');
 }
 
-async function searchDetailHandler() {
-  const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/goods(\?.*)?$/;
-  if (!searchDetailPattern.test(window.location.href)) return;
+function getLastPathSegment() {
+  const regex = /^https:\/\/www\.musinsa\.com\/search\/(snap|goods|benefit|contents|lookbook)(\?.*)?$/;
+  const match = window.location.href.match(regex);
+  return match ? match[1] : null;
+}
 
+async function searchSnapHandler() {
   const container = document.querySelector('.goods-container');
   const pagination = document.querySelector('.pagination');
+  pagination.innerHTML = '';
+  container.innerHTML = '';
+  container.classList.toggle('snap-view-container', true);
+
+  const query = getQueryParams(window.location.search);
+  const baseUrl = setSnapSearchFilters();
+  const data = await (
+    await fetch(baseUrl.toString(), {
+      credentials: 'include',
+    })
+  ).json();
+  const snaps = data?.data?.list;
+
+  const snapIds = snaps.map((item) => item.id).join(',');
+  const snapLikeRequestUrl = new URL('https://content.musinsa.com/api2/content/snap/v1/profiles/liked-snaps/count');
+  snapLikeRequestUrl.searchParams.append('ids', snapIds);
+
+  const snapLikeResponse = await (
+    await fetch(snapLikeRequestUrl.toString(), {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+  ).json();
+
+  snaps.forEach((snapItem, i) => {
+    const snapItemElem = document.createElement('div');
+    snapItemElem.className = 'goods-item snap-view-item';
+    snapItemElem.innerHTML = snapTemplate({
+      snap: {
+        no: snapItem.id,
+        thumbnail: snapItem.thumbnailUrl,
+      },
+      goodsNo: '',
+      isLiked: snapLikeResponse?.data?.[snapItem?.id]?.isExists,
+    });
+
+    const likeBtn = snapItemElem.querySelector('button');
+    likeBtn.addEventListener('click', () => {
+      if (!LOGGED_IN) {
+        if (confirm('로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?'))
+          location.href = 'https://www.musinsa.com/auth/login?referer=https%3A%2F%2Fwww.musinsa.com%2Fmypage';
+        return;
+      }
+
+      const isLiked = likeBtn.classList.contains('liked');
+      likeBtn.classList.toggle('liked');
+
+      const snapNo = snapItem?.snap?.no;
+      if (!snapNo) return;
+      fetch(`https://content.musinsa.com/api2/content/snap/v1/snaps/${snapNo}/liked`, {
+        method: isLiked ? 'DELETE' : 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+    });
+    container.appendChild(snapItemElem);
+  });
+
+  // 페이지 네이션 정보
+  const paginationUrl = new URL('https://content.musinsa.com/api2/content/snap/v1/snaps/count');
+  Object.keys(query).forEach((key) => {
+    paginationUrl.searchParams.append(key, query[key]);
+  });
+  const paginationRes = await (
+    await fetch(paginationUrl.toString(), {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+    })
+  ).json();
+  const total = paginationRes?.data?.count;
+  const size = window.innerWidth < 1701 ? 80 : 100;
+  pagination.innerHTML = paginationTemplate({
+    currentPage: query.page ?? 1,
+    lastPage: Math.ceil(total / size),
+  });
+}
+
+async function searchGoodsHandler() {
+  const container = document.querySelector('.goods-container');
+  const pagination = document.querySelector('.pagination');
+  container.classList.toggle('snap-view-container', false);
   pagination.innerHTML = '';
   container.innerHTML = '';
 
@@ -75,10 +165,24 @@ async function searchDetailHandler() {
   });
 }
 
+async function searchDetailHandler() {
+  const type = getLastPathSegment();
+  if (type === null) return;
+
+  if (type === 'goods') {
+    searchGoodsHandler();
+    return;
+  }
+  if (type === 'snap') {
+    searchSnapHandler();
+    return;
+  }
+}
+
 async function initSearchDetailPageExist() {
   if (window.innerWidth < 1200) return;
-  const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/goods(\?.*)?$/;
-  if (!searchDetailPattern.test(window.location.href)) return;
+  const type = getLastPathSegment();
+  if (type === null) return;
 
   const main = document.querySelector('main>div');
   const headers = document.querySelectorAll('main>div>header');
