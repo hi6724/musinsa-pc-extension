@@ -186,7 +186,7 @@ async function initCategoryPageExist() {
 
 function initCategoryPage() {
   const interval = setInterval(() => {
-    const div = document.querySelector('.itEfxW');
+    const div = document.querySelector('.ivTmZ');
     const isOk = goodsContainerExists();
     if (div || isOk) {
       if (div) div.style.display = 'none';
