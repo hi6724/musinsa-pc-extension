@@ -1,5 +1,142 @@
 /* https://www.musinsa.com/search/musinsa/goods?q=%EB%B0%98%ED%8C%94&type=popular */
 
+/* goodsItem css */
+.bQrEVy {
+  height: fit-content;
+  background-color: white;
+}
+.ikaYtH {
+  position: relative;
+}
+.edWhwq {
+  display: flex;
+  flex-direction: column;
+}
+.lckcfh {
+  min-height: 184px;
+  padding: 12px 8px 24px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bXGDph {
+  display: grid;
+  row-gap: 2px;
+}
+.tzoUH {
+  width: 100%;
+  overflow: hidden;
+}
+.jlrYiO {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.euUmLF {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+.dizzij {
+  display: flex;
+  flex-direction: row;
+}
+.dWwHhz {
+  margin-top: 6px;
+  height: 16px;
+}
+.fObkCV {
+  position: relative;
+  display: flex;
+}
+.iSPiuY {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  z-index: 10;
+}
+.hanfXK {
+  position: relative;
+  width: 100%;
+}
+.kVFxqp {
+  display: flex;
+  align-items: center;
+}
+.oUDiE,
+.hhGfkp,
+.bxFGHv {
+  width: 12px;
+  height: 12px;
+}
+.iqtthR {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  cursor: pointer;
+}
+.jtzgBJ {
+  white-space: normal;
+  -webkit-line-clamp: 2;
+}
+.cMkxIw {
+  white-space: normal;
+  -webkit-line-clamp: 1;
+}
+.bnDFEJ {
+  white-space: normal;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.iXeGsA {
+  font-size: 13px;
+}
+.fyDqTQ {
+  display: flex;
+  flex-direction: row;
+}
+.jAgSIe {
+  position: absolute;
+  inset: 0px;
+  background: rgba(0, 0, 0, 0.4);
+  display: block;
+  z-index: 10;
+}
+.jlRRYg {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  width: calc(100% - 40px);
+  z-index: 20;
+}
+.cMBWCJ {
+  background-color: rgb(74, 74, 74) !important;
+  display: flex;
+}
+.hhGZPH {
+  color: white;
+}
+.fYDLXM {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  min-width: 16px;
+  min-height: 16px;
+  z-index: 10;
+}
+
 @media (min-width: 1200px) {
   .exZiif,
   .yMDns,
