@@ -1,18 +1,10 @@
 /* https://www.musinsa.com/main/116 */
 
 @media (min-width: 1200px) {
-  /* 카테고리(hdUJFm), 검색결과(.dBXfGP), 브랜드(.hUHGvv) 나이키,아디다스(.hqZJRA) 기존 상품 컨테이너 숨기기 */
-  .hbUJFm,
-  .dqBVvr,
-  .hqZJRA,
-  .ivTmZ,
-  .eqgBtw,
-  .jGZauf {
+  .bFLyxS {
     display: none !important;
   }
-  .fdeRLl {
-    flex: none !important;
-  }
+
   .goods-container {
     display: grid;
     z-index: 0;
@@ -20,143 +12,7 @@
     position: relative;
     padding-bottom: 50px !important;
   }
-  .loader {
-    height: 10px;
-  }
-  /*  */
-  #commonLayoutFab {
-    right: -800px !important;
-  }
-  #commonLayoutContainer::before,
-  #commonLayoutContainer::after {
-    display: none !important;
-  }
-  /* 좋아요 */
-  .jGZauf {
-    max-width: 600px;
-  }
-  /* .gxbYJn {
-    height: 130px;
-    overflow: hidden;
-    grid-template-columns: repeat(36, 1fr) !important;
-  }
-  #fakeContainer > div > .gxbYJn {
-    height: 390px;
-  } */
 
-  /* .jyANhC ~ .hKUlNI https://www.musinsa.com/products/3466424 제품 후기 */
-  /* .cmBdKH ~  https://www.musinsa.com/products/3466424 브랜드 */
-  /* .leEKmD ~  https://www.musinsa.com/products/3466424 내 좋아요 */
-  #commonLayoutContainer,
-  #commonLayoutHeader,
-  .cmBdKH,
-  .gHJEDg,
-  .iLGXtZ,
-  .fJBsTX > section,
-  .NoTSp,
-  .leEKmD,
-  ._dim_182gh_37 {
-    max-width: 1200px !important;
-  }
-  .leEKmD {
-    width: 1200px !important;
-  }
-  /* 상품 디테일 페이지 */
-  .bcgdHD {
-    width: 600px !important;
-    left: calc(50% - 600px) !important;
-  }
-
-  .SRIds > div,
-  .dzwNRl {
-    max-width: 600px !important;
-  }
-  .goodsDetailIframe {
-    width: 600px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    right: calc(50% - 600px);
-    z-index: 999;
-  }
-  .goodsDetailIframeHeader {
-    position: fixed;
-    top: 0;
-    width: 300px;
-    height: 52px;
-    z-index: 1001;
-    right: calc(50% - 300px);
-    background-color: #f5f5f5;
-    display: flex;
-    align-items: center;
-  }
-  .toggleButtonContainer {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1rem;
-  }
-  /* 상품 디테일페이지 끝 */
-
-  body,
-  .w-layout {
-    max-width: 100vw !important;
-  }
-
-  /* 메인페이지 최상단 캐러셀 크기 */
-  .swiper {
-    max-width: 600px !important;
-  }
-  /* qr코드 */
-  ._qr_1g9ok_1 {
-    display: none !important;
-  }
-
-  /* 랭킹 */
-  .dKOtPP {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
-  .dKOtPP > :nth-child(1),
-  .dKOtPP > :nth-child(2),
-  .dKOtPP > :nth-child(3) {
-    grid-column: 1 / span 3 !important;
-  }
-
-  /* 하단 nav 좌측으로 */
-
-  #commonLayoutGnb {
-    position: fixed !important;
-  }
-
-  #commonLayoutGnb > div > h2 {
-    display: none !important;
-  }
-  #commonLayoutGnb > div > div {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 1.5rem !important;
-    padding: 1.5rem 0 !important;
-    margin: 0 !important;
-
-    position: fixed !important;
-    left: calc(50% - 670px) !important;
-    top: 1.5rem !important;
-    min-width: 70px !important;
-    width: 70px !important;
-    height: fit-content;
-  }
-
-  #commonLayoutGnb > div > div > a {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-  }
-  /* 좋아요 페이지 */
-  .bqhfYF {
-    display: none !important;
-  }
   /* 커스텀 css */
 
   .pagination {
@@ -217,67 +73,14 @@
   .my-like-btn:not(.liked) > div > :nth-child(1) {
     display: none;
   }
-
-  .eGmYVg,
-  .dREizi {
-    transform: scale(1) !important;
-    animation: none !important;
-    opacity: 1 !important;
-  }
-  .bTubkf,
-  .llzAq {
-    right: 50% !important;
-    transform: translateX(50%) !important;
-  }
-
-  /* 타임세일 */
-  .kYTqzW {
-    flex: 0 0 12.5% !important;
-    width: 12.5% !important;
-  }
-
-  /* 필터 */
-  .ilqtxK {
-    width: 600px !important;
-  }
 }
 
 @media (min-width: 1701px) {
-  #commonLayoutContainer,
-  #commonLayoutHeader,
-  .cmBdKH,
-  .gHJEDg,
-  .iLGXtZ,
-  .fJBsTX > section,
-  .NoTSp,
-  .leEKmD,
-  ._dim_182gh_37 {
-    max-width: 1500px !important;
-  }
-  .leEKmD {
-    width: 1500px !important;
-  }
-
-  #commonLayoutFab {
-    right: -1050px !important;
-  }
-  .cta-DVS {
-    grid-template-columns: repeat(10, 150px) !important;
-  }
-  #commonLayoutGnb > div > div {
-    left: calc(50% - 820px) !important;
-  }
-
   .goods-container {
     grid-template-columns: repeat(10, 1fr);
   }
-  /* 상품 디테일 페이지 */
-  .bcgdHD {
-    left: calc(50% - 750px) !important;
-  }
 }
 
-/* goodsItem css */
 .bQrEVy {
   height: fit-content;
   background-color: white;

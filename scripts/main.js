@@ -3,11 +3,7 @@ const callback = [];
 async function handleRouteChange(oldHref) {
   removeInsertedCSS();
   const searchDetailPattern = /^https:\/\/www\.musinsa\.com\/search\/(snap|goods)(\?.*)?$/;
-  // TODO: 아래 url처리하기
-  const todoPattern = /^https:\/\/www\.musinsa\.com\/search\/(benefit|contents|lookbook)(\?.*)?$/;
   const likePattern = /^https:\/\/www\.musinsa\.com\/like\/goods(\?.*)?$/;
-  const brandUrlPattern = /^https:\/\/www\.musinsa\.com\/brand\/.*(\?.*)?$/;
-  const goodsDetailPattern = /^https:\/\/www\.musinsa\.com\/products\/.*(\?.*)?$/;
   const currentUrl = document.location.href;
 
   const currentQueryParams = getQueryParams('?' + currentUrl.split('?')[1]);
@@ -25,24 +21,10 @@ async function handleRouteChange(oldHref) {
     await initSearchDetailPage();
     return;
   }
-
-  if (todoPattern.test(currentUrl)) {
-    insertCSS({ '.eqgBtw': 'display: block' });
-    return;
-  }
-
-  if (brandUrlPattern.test(currentUrl)) {
-    await initBrandPage();
-    return;
-  }
-  if (likePattern.test(currentUrl)) {
-    await initLikesPage();
-    return;
-  }
-  if (goodsDetailPattern.test(currentUrl)) {
-    await initGoodsDetailPage();
-    return;
-  }
+  // if (likePattern.test(currentUrl)) {
+  //   await initLikesPage();
+  //   return;
+  // }
   location.href.includes('category') && (await initCategoryPage());
 }
 

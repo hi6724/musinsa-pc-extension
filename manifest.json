@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "무신사PC",
-  "version": "2.1.14",
+  "version": "3.0.00",
   "icons": {
     "16": "images/16.png",
     "32": "images/32.png",
@@ -12,6 +12,7 @@
     "default_icon": "images/32.png",
     "default_title": "무신사PC"
   },
+  "description": "무신사를 pc에서 사용하기 편하도록 수정하는 익스텐션입니다.",
   "permissions": [],
   "content_scripts": [
     {
