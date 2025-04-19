@@ -3,7 +3,7 @@ function setSnapSearchFilters() {
   const query = getQueryParams(window.location.search);
   baseUrl.searchParams.append('fields', 'id,contentType,profileId,thumbnailUrl,model,labels,createdAt,updatedAt');
   baseUrl.searchParams.append('page', query.page ?? 1);
-  baseUrl.searchParams.append('size', window.innerWidth < 1701 ? 80 : 100);
+  baseUrl.searchParams.append('size', 80);
   Object.keys(query).forEach((key) => {
     baseUrl.searchParams.append(key, query[key]);
   });
@@ -25,7 +25,7 @@ function setSearchFilters() {
   const query = getQueryParams(window.location.search);
   baseUrl.searchParams.append('caller', 'SEARCH');
   baseUrl.searchParams.append('page', query.page ?? 1);
-  baseUrl.searchParams.append('size', window.innerWidth < 1701 ? 80 : 100);
+  baseUrl.searchParams.append('size', 80);
   Object.keys(query).forEach((key) => {
     baseUrl.searchParams.append(key, query[key]);
   });
@@ -40,7 +40,7 @@ function setCategoryFilters() {
   baseUrl.searchParams.append('category', category);
   baseUrl.searchParams.append('caller', 'CATEGORY');
   baseUrl.searchParams.append('page', query.page ?? 1);
-  baseUrl.searchParams.append('size', window.innerWidth < 1701 ? 80 : 100);
+  baseUrl.searchParams.append('size', 80);
   Object.keys(query).forEach((key) => {
     baseUrl.searchParams.append(key, query[key]);
   });
@@ -64,7 +64,7 @@ function setBrandFilters2() {
   baseUrl.searchParams.append('brand', brand);
   baseUrl.searchParams.append('caller', 'BRAND');
   baseUrl.searchParams.append('page', query.page ?? 1);
-  baseUrl.searchParams.append('size', window.innerWidth < 1701 ? 80 : 100);
+  baseUrl.searchParams.append('size', 80);
   Object.keys(query).forEach((key) => {
     if (key === 'categoryCode') {
       baseUrl.searchParams.append('category', query[key]);
@@ -84,7 +84,7 @@ function setBestBrandFilters() {
 
   let baseUrl = new URL(`https://api.musinsa.com/api2/dp/v1/brand/flagship/${brand}/goods/best`);
   baseUrl.searchParams.append('page', query.page ?? 1);
-  baseUrl.searchParams.append('size', window.innerWidth < 1701 ? 80 : 100);
+  baseUrl.searchParams.append('size', 80);
   Object.keys(query).forEach((key) => {
     if (key === 'categoryCode') {
       baseUrl.searchParams.append('category', query[key]);
@@ -102,7 +102,7 @@ function setBestBrandFilters() {
 
 function setLikeFilters(filter, { cursor, lastIndex }) {
   const baseUrl = new URL('https://like.musinsa.com/api2/like/like-page/v1/tab/goods');
-  baseUrl.searchParams.append('size', window.innerWidth < 1701 ? 80 : 100);
+  baseUrl.searchParams.append('size', 80);
   baseUrl.searchParams.set('isSale', filter?.isSale ?? false);
   baseUrl.searchParams.set('isNotSoldOut', filter?.isNotSoldOut ?? false);
   filter.sort && baseUrl.searchParams.set('sort', filter.sort);

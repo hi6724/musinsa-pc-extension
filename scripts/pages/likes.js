@@ -11,6 +11,17 @@ async function convertToCode(filter) {
   ).json();
   const categoryCode = data.categoryCounts.find((el) => el.categoryName === filter.currentCategory)?.categoryCode;
 
+  const categoryCodeMap = {
+    신발: '103',
+    상의: '001',
+    아우터: '002',
+    바지: '003',
+    가방: '004',
+    패션소품: '101',
+    '스포츠/레저': '017',
+    '디지털/라이프': '102',
+  };
+
   const sortCodeMap = {
     담은순: 'LIKE_MEMBER_ID_DESC',
     낮은가격순: 'PRICE_ASC',
@@ -93,8 +104,8 @@ async function likeObserverCallback() {
   if (!likePattern.test(window.location.href)) return;
 
   const childrenList = Array.from(document.querySelector('main').childNodes);
-  const categoryList = Array.from(childrenList[1].firstChild.childNodes);
-  const currentCategory = categoryList.find((el) => el.classList.contains('bg-white'))?.innerText;
+  const categoryList = Array.from(Array.from(document.querySelectorAll('.bogAwA')).find((el) => el.childElementCount > 1).childNodes);
+  const currentCategory = categoryList.find((el) => el.classList.contains('underline')).innerText;
   const isSale = childrenList[2].firstChild.childNodes[0].querySelector('button').dataset.state === 'checked';
   const isNotSoldOut = childrenList[2].firstChild.childNodes[1].querySelector('button').dataset.state === 'checked';
   const sortText = childrenList[2].childNodes[1].querySelector('span').innerText;
@@ -106,6 +117,7 @@ async function likeObserverCallback() {
     prevFilter?.sortText === sortText
   )
     return;
+
   prevFilter = { currentCategory, isSale, isNotSoldOut, sortText };
   prevCursorList = [];
   currentPage = 1;

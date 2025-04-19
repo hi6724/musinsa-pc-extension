@@ -149,11 +149,7 @@ function goodsItemTemplate({
                 </span>
               </a>
               <div class='sc-guDLey sc-dmyCSP jlrYiO tzoUH'>
-                ${
-                  saleRate > 0
-                    ? `<span class='text-body_13px_semi sc-hLQSwg iXeGsA text-red font-pretendard'>${`${saleRate}`}%</span>`
-                    : ''
-                }
+                ${saleRate > 0 ? `<span class='text-body_13px_semi sc-hLQSwg iXeGsA text-red font-pretendard'>${`${saleRate}`}%</span>` : ''}
                 <span class='text-body_13px_semi sc-hLQSwg iXeGsA font-pretendard'>${`${price.toLocaleString()}`}원</span>
               </div>
             </div>
@@ -202,49 +198,6 @@ function goodsItemTemplate({
             </div>
             <div class='sc-guDLey sc-jIBlqr jlrYiO dWwHhz'>
               ${goodsLabelHTML}
-            </div>
-            <div class='pt-3'>
-              <div class='relative'>
-                <div
-                  class='block sc-iuOOrT hanfXK gtm-click-button'
-                  tabindex='0'
-                  data-index='3'
-                  data-section-name='goods_list'
-                  data-section-index='19'
-                  data-brand-id='musinsastandard'
-                  data-item-list-id='goods_list'
-                  data-item-list-index='3'
-                  data-item-applied-filter-group-1='성별:${`${displayGenderText}`}'
-                  data-item-applied-filter-group-2='(not set)'
-                  data-button-id='goods_option'
-                  data-button-name='상품옵션 열기'
-                >
-                  <div style='position: relative;'>
-                    <div class='flex items-center relative'>
-                      <button type='button' class='sc-cyZbeP kVFxqp'>
-                        <span class='text-etc_11px_reg font-normal text-gray-500 font-pretendard'>옵션</span>
-                        <span class='sc-lnsjTu oUDiE'>
-                          <svg
-                            width='100%'
-                            height='100%'
-                            viewBox='0 0 20 20'
-                            xmlns='http://www.w3.org/2000/svg'
-                            class='stroke-black'
-                            fill='none'
-                          >
-                            <path
-                              d='M4 8L9.78787 13.7879C9.90503 13.905 10.095 13.905 10.2121 13.7879L16 8'
-                              class='stroke-gray-500'
-                              vector-effect='non-scaling-stroke'
-                            ></path>
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <span class='text-etc_11px_reg absolute top-0 right-0 text-gray-500 font-pretendard'>${`${displayGenderText}`}</span>
-              </div>
             </div>
           </div>
         </div>

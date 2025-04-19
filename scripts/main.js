@@ -21,10 +21,10 @@ async function handleRouteChange(oldHref) {
     await initSearchDetailPage();
     return;
   }
-  // if (likePattern.test(currentUrl)) {
-  //   await initLikesPage();
-  //   return;
-  // }
+  if (likePattern.test(currentUrl)) {
+    await initLikesPage();
+    return;
+  }
   location.href.includes('category') && (await initCategoryPage());
 }
 
