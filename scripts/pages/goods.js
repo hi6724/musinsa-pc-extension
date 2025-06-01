@@ -180,7 +180,6 @@ async function searchDetailHandler() {
 }
 
 async function initSearchDetailPageExist() {
-  if (window.innerWidth < 1200) return;
   const type = getLastPathSegment();
   if (type === null) return;
 
@@ -211,10 +210,12 @@ async function initSearchDetailPageExist() {
 }
 
 function initSearchDetailPage() {
+  if (window.innerWidth < 1200) return;
   const interval = setInterval(() => {
-    const div = document.querySelector('.bFLyxS');
+    const div = document.querySelector('.ewYFgH');
     const isOk = goodsContainerExists();
     if (div || isOk) {
+      if (div) div.style.display = 'none';
       clearInterval(interval);
       initSearchDetailPageExist();
     }

@@ -155,7 +155,6 @@ async function categorySearchHandler() {
 
 async function initCategoryPageExist() {
   const query = getQueryParams(window.location.search);
-  if (window.innerWidth < 1200) return;
   const isSnapView = query.isSnapView == 'true';
   const categoryUrlPattern = /^https:\/\/www\.musinsa\.com\/category\/.*(\?.*)?$/;
   if (!categoryUrlPattern.test(window.location.href)) return;
@@ -185,8 +184,9 @@ async function initCategoryPageExist() {
 }
 
 function initCategoryPage() {
+  if (window.innerWidth < 1200) return;
   const interval = setInterval(() => {
-    const div = document.querySelector('.eSaMDy');
+    const div = document.querySelector('.hRlVQI');
     const isOk = goodsContainerExists();
     if (div || isOk) {
       if (div) div.style.display = 'none';
